@@ -1,0 +1,121 @@
+<app-header></app-header>
+<div class="flex items-center min-h-screen bg-gray-50 dark:bg-dark-grey">
+  <div
+    class="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl dark:bg-grey-blue"
+  >
+    <div class="flex flex-col md:flex-row">
+      <div class="h-32 md:h-auto md:w-1/2">
+        <object
+          data="../../assets/img/secure-login-animate.svg"
+          class="h-full w-full"
+        ></object>
+      </div>
+      <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+        <div class="w-full">
+          <div class="flex justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-20 h-20 text-blue-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M12 14l9-5-9-5-9 5 9 5z" />
+              <path
+                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+              />
+            </svg>
+          </div>
+          <h1
+            class="mb-4 text-2xl font-bold text-center text-gray-700 dark:text-white"
+          >
+            Sign Up
+          </h1>
+          <div>
+            <form [formGroup]="formdata" (ngSubmit)="onSubmit()" novalidate>
+              <div class="mt-4 form-group">
+                <label class="block text-sm dark:text-white"> Email </label>
+                <input
+                  id="email"
+                  type="email"
+                  class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 dark:bg-grey-800"
+                  placeholder="Email Address"
+                  formControlName="email"
+                />
+                <div
+                  *ngIf="f['email'].touched && f['email'].invalid"
+                  class="alert alert-danger"
+                >
+                  <div
+                    *ngIf="f['email'].errors && f['email'].errors['required']"
+                  >
+                    <span class="text-xs text-red-700" id="emailHelp"
+                      >Email is required.</span
+                    >
+                  </div>
+                  <div *ngIf="f['email'].errors && f['email'].errors['email']">
+                    <span class="text-xs text-red-700" id="emailHelp"
+                      >Email must be a valid email address.</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 form-group">
+                <label class="block mt-4 text-sm dark:text-white">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  
+                  class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 dark:bg-grey-800"
+                  placeholder="Password"
+                  formControlName="password"
+                  required
+                />
+                <div
+                  *ngIf="f['password'].touched && f['password'].invalid"
+                  class="alert alert-danger"
+                >
+                  <div
+                    *ngIf="
+                      f['password'].errors && f['password'].errors['required']
+                    "
+                  >
+                    <span class="text-xs text-red-700" id="passwordHelp"
+                      >Password is required.</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button
+                  class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
+                  type="submit"
+                  [disabled]="!formdata.valid"
+                >
+                  Sign Up
+                </button>
+              </div>
+              <div class="mt-4 text-center">
+                <p class="text-sm dark:text-white">
+                  Already have an account?
+                  <a href="#" class="text-blue-600 hover:underline">
+                    Sign In.</a
+                  >
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
