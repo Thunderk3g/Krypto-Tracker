@@ -1,8 +1,8 @@
 <app-header></app-header>
 <!-- Card is full width. Use in 12 col grid for best view. -->
 <!-- Card code block start -->
-<div class="flex  min-h-screen bg-gray-50 dark:bg-dark-grey" style="padding-top: 50px;">
-    <div class=" h-full max-w-4xl mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+<div class="  min-h-screen bg-gray-50 dark:bg-dark-grey" style="padding-top: 50px;">
+    <div class=" h-full max-w-4xl mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" >
     <div class="bg-white dark:bg-gray-800 rounded py-5 pl-6 flex items-start shadow">
         <div class="text-gray-700 dark:text-gray-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dashboard" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -15,7 +15,7 @@
         <div class="pl-3 pr-10 mt-1">
             <h3 class="font-normal leading-4 text-gray-800 dark:text-gray-100 text-base">Total Coins</h3>
             <div class="flex items-end mt-4">
-                <h2 class="text-indigo-700 dark:text-indigo-600 text-2xl leading-normal font-bold">{{li.totalCoins}}</h2>
+                <h2 class="text-indigo-700 dark:text-indigo-600 text-2xl leading-normal font-bold">{{totalCoins}}</h2>
             </div>
             <div class="flex items-center mt-5">
                 <div class="text-green-400">
@@ -41,7 +41,7 @@
         <div class="pl-3 pr-10 mt-1">
             <h3 class="font-normal leading-4 text-gray-800 dark:text-gray-100 text-base">Total Exchanges</h3>
             <div class="flex items-end mt-4">
-                <h2 class="text-indigo-700 dark:text-indigo-600 text-2xl leading-normal font-bold">{{li.totalExchanges}}</h2>
+                <h2 class="text-indigo-700 dark:text-indigo-600 text-2xl leading-normal font-bold">{{totalExchanges}}</h2>
             </div>
             <div class="flex items-center mt-5">
                 <div class="text-green-400">
@@ -67,7 +67,7 @@
         <div class="pl-3 pr-10 mt-1">
             <h3 class="font-normal leading-4 text-gray-800 dark:text-gray-100 text-base">Total Markets</h3>
             <div class="flex items-end mt-4">
-                <h2 class="text-indigo-700 dark:text-indigo-600 text-2xl leading-normal font-bold">{{li.totalMarkets}}</h2>
+                <h2 class="text-indigo-700 dark:text-indigo-600 text-2xl leading-normal font-bold">{{totalMarkets}}</h2>
             </div>
             <div class="flex items-center mt-5">
                 <div class="text-red-400">
@@ -106,6 +106,91 @@
         </div>
     </div>
 </div>
+<div class="h-full w-full sm:px-6" style="display: block;">
+    <div class="px-4 md:px-10 py-4 md:py-7 bg-gray-100 rounded-tl-lg rounded-tr-lg">
+        <div class="sm:flex items-center justify-between">
+            <p class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Projects</p>
+            <div>
+                <button class="inline-flex sm:ml-3 mt-4 sm:mt-0 items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                    <p class="text-sm font-medium leading-none text-white">New Project</p>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white shadow px-4 md:px-10 pt-4 md:pt-7 pb-5 overflow-y-auto">
+        <table class="w-full whitespace-nowrap">
+            <thead>
+                <tr class="h-16 w-full text-sm leading-none text-gray-800">
+                    <th class="font-normal text-left pl-4">Coin</th>
+                    <th class="font-normal text-left pl-12">24hVolume</th>
+                    <th class="font-normal text-left pl-12">MarketCap</th>
+                    <th class="font-normal text-left pl-20">Price</th>
+                    <th class="font-normal text-left pl-20">Tier</th>
+                </tr>
+            </thead>
+            <tbody class="w-full">
+                <tr class="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100" *ngFor="let item of li  ; index as i;">
+                    <td class="pl-4 cursor-pointer">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10">
+                                <img class="w-full h-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects.png" />
+                            </div>
+                            <div class="pl-4">
+                                <p class="font-medium">{{li[i].name}}</p>
+                                <p class="text-xs leading-3 text-gray-600 pt-2">Herman Group</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="pl-12">
+                        <p class="text-sm font-medium leading-none text-gray-800">72%</p>
+                        <div class="w-24 h-3 bg-gray-100 rounded-full mt-2">
+                            <div class="w-20 h-3 bg-green-progress rounded-full"></div>
+                        </div>
+                    </td>
+                    <td class="pl-12">
+                        <p class="font-medium">32/47</p>
+                        <p class="text-xs leading-3 text-gray-600 mt-2">5 tasks pending</p>
+                    </td>
+                    <td class="pl-20">
+                        <p class="font-medium">$13,000</p>
+                        <p class="text-xs leading-3 text-gray-600 mt-2">$4,200 left</p>
+                    </td>
+                    <td class="pl-20">
+                        <p class="font-medium">22.12.21</p>
+                        <p class="text-xs leading-3 text-gray-600 mt-2">34 days</p>
+                    </td>
+                    <td class="pl-16">
+                        <div class="flex items-center">
+                            <img class="shadow-md w-8 h-8 rounded-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png" />
+                            <img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png" />
+                            <img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(10).png" />
+                            <img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png" />
+                        </div>
+                    </td>
+                    <td class="px-7 2xl:px-0">
+                        <button (click)="dropDownList===1?dropDownList=0:dropDownList=1" class="focus:outline-none pl-7">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M4.16667 10.8334C4.62691 10.8334 5 10.4603 5 10.0001C5 9.53984 4.62691 9.16675 4.16667 9.16675C3.70643 9.16675 3.33334 9.53984 3.33334 10.0001C3.33334 10.4603 3.70643 10.8334 4.16667 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M10 10.8334C10.4602 10.8334 10.8333 10.4603 10.8333 10.0001C10.8333 9.53984 10.4602 9.16675 10 9.16675C9.53976 9.16675 9.16666 9.53984 9.16666 10.0001C9.16666 10.4603 9.53976 10.8334 10 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M15.8333 10.8334C16.2936 10.8334 16.6667 10.4603 16.6667 10.0001C16.6667 9.53984 16.2936 9.16675 15.8333 9.16675C15.3731 9.16675 15 9.53984 15 10.0001C15 10.4603 15.3731 10.8334 15.8333 10.8334Z" stroke="#A1A1AA" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <div *ngIf="dropDownList===1" class="bg-white shadow w-24 absolute z-30 right-0 mr-6">
+                            <div class="text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">
+                                <p>Edit</p>
+                            </div>
+                            <div class="text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">
+                                <p>Delete</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
 </div>
+</div>
+
 <!-- Card code block end -->
 
