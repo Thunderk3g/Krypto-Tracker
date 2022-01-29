@@ -24,6 +24,8 @@
     "alpinejs": "^3.8.1",
     "i": "0.3.7",
     "millify": "^4.0.0",
+    "ng2-search-filter": "^0.5.1",
+    "ngx-pagination": "^5.1.1",
     "npm": "8.3.2",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

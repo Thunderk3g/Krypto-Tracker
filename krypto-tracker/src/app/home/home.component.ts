@@ -9,30 +9,37 @@ import millify from 'millify';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  dropDownList: any;
   data: any;
+  term: any;
+  p:any;
+  currentPage:any;
+  itemsPerPage:any;
   li: any[] = [];
   item: any;
   totalMarketCap:any;
-  totalMarkets:any;
-  totalCoins: any;
+  totalCoins :any;
+  total24hVolume: any;
   totalExchanges: any;
+  uuid: any;
   constructor(private apiService: ApiService , private http: HttpClient ) { 
     this.li = [];
   }
 
   ngOnInit() {
+  this.getTotal();
+  this.getData();
+}
+  getTotal(){
     this.apiService.getData().subscribe((data) => {
-      this.li = data.body.data.coins;
       this.totalMarketCap = millify(data.body.data.stats.totalMarketCap, {
-        precision: 5,  
-        decimalSeparator: "."
-      });
-      this.totalMarkets = millify(data.body.data.stats.totalMarkets, {
         precision: 2,  
         decimalSeparator: "."
       });
-      this.totalCoins = millify(data.body.data.stats.totalCoins, {
+      this.totalCoins  = millify(data.body.data.stats.totalCoins, {
+        precision: 2,  
+        decimalSeparator: "."
+      });
+      this.total24hVolume = millify(data.body.data.stats.total24hVolume, {
         precision: 2,  
         decimalSeparator: "."
       });
@@ -40,9 +47,15 @@ export class HomeComponent implements OnInit {
         precision: 2,  
         decimalSeparator: "."
       });
-      console.log(this.li);
     });
-  
+  }
+  getData(){  
+    this.apiService.getData().subscribe((data) => {
+    this.li = data.body.data.coins;
+    console.log(this.li);
+    
+  });
 }
+
 }
 
