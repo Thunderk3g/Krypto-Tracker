@@ -1,7 +1,7 @@
 <app-header></app-header>
 <!-- Card is full width. Use in 12 col grid for best view. -->
 <!-- Card code block start -->
-<div class="  min-h-screen content-center  bg-gray-50 dark:bg-pure-black" style="padding-top: 4em;">
+<div class="  min-h-screen content-center  bg-gray-50 dark:bg-dark-grey" style="padding-top: 4em;">
     <div class="flex justify-center py-12 sm:px-6 px-4">
         <div class="max-w-2xl rounded shadow bg-white dark:bg-grey-blue  py-6 pl-6 pr-12">
             <div class="flex items-center">
@@ -121,10 +121,14 @@
                     </td>
                     <td class="pl-20">
                         <p class="font-medium text-center  dark:text-white">${{li[i].price}}</p>
-                    
+                    </td>
+                    <td class="pl-20">
+                     
                     </td>
                     <td class="pl-4">
-                            <button class="bg-transparent border border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white text-center py-2 px-4 rounded"> View </button>
+                        <input type="text" class="form-control" placeholder="uuid" 
+                        aria-describedby="basic-addon1" value='{{li[i].uuid}}' #name readonly style="display: none;">
+                        <button  class="bg-transparent border border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white text-center py-2 px-4 rounded"  (click)="getDetails(name.value)"> View </button>
                     </td>
                     
                 </tr>

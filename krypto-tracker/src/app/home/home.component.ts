@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   totalCoins :any;
   total24hVolume: any;
   totalExchanges: any;
-  uuid: any;
+  value: any;
   constructor(private apiService: ApiService , private http: HttpClient ) { 
     this.li = [];
   }
@@ -56,6 +56,8 @@ export class HomeComponent implements OnInit {
     
   });
 }
-
+getDetails(value: any) { 
+  console.log(value);
+}
 }
 
