@@ -2,26 +2,22 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import millify from 'millify';
-
+import { DataService } from '../services/data.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  data: any;
-  term: any;
-  p:any;
-  currentPage:any;
-  itemsPerPage:any;
+
   li: any[] = [];
-  item: any;
   totalMarketCap:any;
   totalCoins :any;
   total24hVolume: any;
   totalExchanges: any;
-  value: any;
-  constructor(private apiService: ApiService , private http: HttpClient ) { 
+  public value: string;
+  message: string;
+  constructor(private apiService: ApiService , private http: HttpClient , private data:DataService) { 
     this.li = [];
   }
 
@@ -57,7 +53,18 @@ export class HomeComponent implements OnInit {
   });
 }
 getDetails(value: any) { 
-  console.log(value);
+  const name = this.li[value].name; 
+  const iconUrl =this.li[value].iconUrl; 
+  const rank = this.li[value].rank;
+  const btcPrice = this.li[value].btcPrice; ;
+  const marketCap = this.li[value].marketCap; ;
+  const symbol = this.li[value].symbol; ;
+  const price = this.li[value].price; ;
+  const obj = {name, iconUrl, rank ,btcPrice , marketCap, symbol , price};
+
+  console.log(obj);
+  this.data.onPushTable(obj);
 }
 }
+
 

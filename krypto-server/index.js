@@ -24,19 +24,13 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to COINSRANKING-API Connector" });
 });
 app.use(cors(corsOptions))
+let res = null;
 
-
-
-
-const options = {
-    url: 'https://api.coinranking.com/v2/coins',
-    method: 'GET',
-    headers: {
+const headers = {
         'x-access-token': 'coinranking364e1de9aee4e6296b82b66b4d7d53f44ccdab4df5e455f2'
-    }
   };
 app.get('/getdata',(req,res)=>{
-    axios(options)
+    axios.get('https://api.coinranking.com/v2/coins',{headers})
     .then(async function(response){
         var user = response.data;
         console.log(user);
@@ -45,6 +39,18 @@ app.get('/getdata',(req,res)=>{
       .catch(error => {
         console.error(error)
       })
+})
+
+app.post('/getcoindata',(req,res)=>{  
+  axios.get('https://api.coinranking.com/v2/coin' + req.body.value,{headers})
+  .then(async function(response){
+      var user = response.data;
+      console.log(user);
+      res.send(response.data)
+    })
+    .catch(error => {
+      console.error(error)
+    })
 })
 
 const PORT = process.env.PORT || 3000;
