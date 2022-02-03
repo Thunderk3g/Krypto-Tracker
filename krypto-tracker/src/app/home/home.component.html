@@ -78,7 +78,7 @@
 
             <div>
                 
-                <button class="inline-flex sm:ml-3 mt-4 sm:mt-0 items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                <button class="inline-flex sm:ml-3 mt-4 sm:mt-0 items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded" routerLink="/buy-krypto">
                     <p class="text-sm font-medium leading-none text-white">Buy Crypto</p>
                 </button>
             </div>
@@ -102,8 +102,8 @@
                     <td class ="pl-3">
                         <p class="font-medium dark:text-white">{{li[i].rank}}</p>
                     </td>
-                    <td class="pl-10 cursor-pointer">
-                        <div class="flex items-center">
+                    <td class="pl-10 cursor-pointer" >
+                        <div class="flex items-center" >
                             <div class="w-10 h-10">
                                 <img class="w-full h-full" src="{{li[i].iconUrl}}" />
                             </div>
@@ -122,15 +122,19 @@
                     <td class="pl-20">
                         <p class="font-medium text-center  dark:text-white">${{li[i].price}}</p>
                     </td>
-                    <td class="pl-20">
-                     
-                    </td>
                     <td class="pl-4">
                         <input type="text" class="form-control"  placeholder="uuid" 
                         aria-describedby="basic-addon1" value='{{i}}' #name  readonly style="display: none;">
-                        <button  class="bg-transparent border border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white text-center py-2 px-4 rounded" [value]='name.value' (click)="getDetails(name.value)" [routerLink]="['/coin', li[i].name]" > View </button>
-                        
+                        <button  class="bg-transparent border border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white text-center py-2 px-4 rounded" [value]='name.value' (click)="getDetails(name.value)" [routerLink]="['/coin', li[i].name]" style ="display: inline-block;"> View </button>
+                      
                     </td>
+                    <td class="pl-4">
+                        <button  class="bg-transparent border border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white text-center py-2 px-4 rounded" [value]='name.value' (click)="addtoWatchlist()"  > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                          </svg> </button>
+                    </td>
+               
+
                 </tr>
             </tbody>
         </table>

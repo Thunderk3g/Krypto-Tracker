@@ -59,11 +59,15 @@ getDetails(value: any) {
   const btcPrice = this.li[value].btcPrice; ;
   const marketCap = this.li[value].marketCap; ;
   const symbol = this.li[value].symbol; ;
-  const price = this.li[value].price; ;
-  const obj = {name, iconUrl, rank ,btcPrice , marketCap, symbol , price};
+  const price = this.li[value].price; 
+  const change = this.li[value].change;
+  const obj = {name, iconUrl, rank ,btcPrice , marketCap, symbol , price ,change};
 
   console.log(obj);
   this.data.onPushTable(obj);
+}
+addtoWatchlist(){
+  alert( 'Hello ' + '\n Added to Watchlist');    
 }
 }
 

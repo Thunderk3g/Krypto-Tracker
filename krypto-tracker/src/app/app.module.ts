@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CoinDetailsComponent } from './coin-details/coin-details.component';
 import { LearnComponent } from './learn/learn.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
+import { BuyKryptoComponent } from './buy-krypto/buy-krypto.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { LearnComponent } from './learn/learn.component';
     LoginComponent,
     SignupComponent,
     CoinDetailsComponent,
-    LearnComponent
+    LearnComponent,
+    WatchlistComponent,
+    BuyKryptoComponent
   ],
   imports: [
     BrowserModule,

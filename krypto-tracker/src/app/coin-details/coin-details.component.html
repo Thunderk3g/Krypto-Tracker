@@ -21,19 +21,10 @@
                         </span>
                         Las Vegas, Nevada
                     </p>
-                    <p class="text-gray-600 dark:text-gray-100 text-sm tracking-normal font-normal mb-8 text-center w-10/12">The more I deal with the work as something that is my own, as something that is personal, the more successful it is.</p>
                     <div class="flex items-start">
                         <div class="">
-                            <h2 class="text-gray-600 dark:text-gray-100 text-2xl leading-6 mb-2 text-center">82</h2>
-                            <p class="text-gray-800 dark:text-gray-100 text-sm leading-5">Reviews</p>
-                        </div>
-                        <div class="mx-6 lg:mx-3 xl:mx-6 px-8 lg:px-4 xl:px-8 border-l border-r">
-                            <h2 class="text-gray-600 dark:text-gray-100 text-2xl leading-6 mb-2 text-center">28</h2>
-                            <p class="text-gray-800 dark:text-gray-100 text-sm leading-5">Projects</p>
-                        </div>
-                        <div class="">
-                            <h2 class="text-gray-600 dark:text-gray-100 text-2xl leading-6 mb-2 text-center">42</h2>
-                            <p class="text-gray-800 dark:text-gray-100 text-sm leading-5">Approved</p>
+                            <h2 class="text-gray-600 dark:text-gray-100 text-2xl leading-6 mb-2 text-center">{{marketCap}}</h2>
+                            <p class="text-gray-800 dark:text-gray-100 text-sm leading-5">Market Cap</p>
                         </div>
                     </div>
                 </div>
@@ -46,9 +37,11 @@
                             <polyline points="4 16 12 20 20 16" />
                         </svg>
                     </div>
-                    <h2 class="text-gray-800 dark:text-gray-100 text-xl tracking-normal text-center font-medium mb-1">Senior Product Designer</h2>
-                    <p class="text-gray-600 dark:text-gray-100 text-sm tracking-normal font-normal mb-3 text-center">Freelance</p>
-                    <p class="text-gray-600 dark:text-gray-100 text-sm tracking-normal font-normal mb-8 text-center w-10/12">John is a true asset to us, providing advanced designing skills from years of experience as UX designer.</p>
+                    <h2 class="text-gray-800 dark:text-gray-100 text-xl tracking-normal text-center font-medium mb-1">Some Text</h2>
+                    <p class="text-gray-600 dark:text-gray-100 text-sm tracking-normal font-normal mb-3 text-center">News about {{coinData.name}}</p>
+                    <p class="text-gray-600 dark:text-gray-100 text-sm tracking-normal font-normal mb-8 text-center w-10/12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                        </p>
                     <div class="flex items-start">
                         <div class="bg-gray-200 text-gray-600 dark:text-gray-100 dark:bg-gray-700 rounded text-xs leading-3 py-2 px-3">Interface</div>
                         <div class="bg-gray-200 text-gray-600 dark:text-gray-100 dark:bg-gray-700 rounded mx-2 text-xs leading-3 py-2 px-3">Interface</div>
@@ -61,14 +54,14 @@
                     </div>
                 </div>
                 <div class="w-full lg:w-1/3 flex-col flex justify-center items-center px-12 py-8">
-                    <h2 class="text-center text-2xl text-gray-800 dark:text-gray-100 font-medium tracking-normal">$90</h2>
-                    <h2 class="text-center text-sm text-gray-600 dark:text-gray-100 font-normal mt-2 mb-4 tracking-normal">Hourly Rate</h2>
-                    <h2 class="text-center text-2xl text-gray-800 dark:text-gray-100 font-medium tracking-normal">$32,000</h2>
-                    <h2 class="text-center text-sm text-gray-600 dark:text-gray-100 font-normal mt-2 mb-4 tracking-normal">Total Earned</h2>
-                    <h2 class="text-center text-2xl text-gray-800 dark:text-gray-100 font-medium tracking-normal">2000</h2>
-                    <h2 class="text-center text-sm text-gray-600 dark:text-gray-100 font-normal mt-2 mb-4 tracking-normal">Hours Worked</h2>
-                    <h2 class="text-center text-2xl text-gray-800 dark:text-gray-100 font-medium tracking-normal">95%</h2>
-                    <h2 class="text-center text-sm text-gray-600 dark:text-gray-100 font-normal mt-2 mb-4 tracking-normal">Success Rate</h2>
+                    <h2 class="text-center text-2xl text-gray-800 dark:text-gray-100 font-medium tracking-normal">{{price}}</h2>
+                    <h2 class="text-center text-sm text-gray-600 dark:text-gray-100 font-normal mt-2 mb-4 tracking-normal">Price Per Coin</h2>
+                    <h2 class="text-center text-2xl text-gray-800 dark:text-gray-100 font-medium tracking-normal">{{coinData.rank}}</h2>
+                    <h2 class="text-center text-sm text-gray-600 dark:text-gray-100 font-normal mt-2 mb-4 tracking-normal">Rank</h2>
+                    <h2 class="text-center text-2xl text-gray-800 dark:text-gray-100 font-medium tracking-normal">{{coinData.btcPrice}}</h2>
+                    <h2 class="text-center text-sm text-gray-600 dark:text-gray-100 font-normal mt-2 mb-4 tracking-normal">bTC price</h2>
+                    <h2 class="text-center text-2xl text-gray-800 dark:text-gray-100 font-medium tracking-normal">{{coinData.change}}%</h2>
+                    <h2 class="text-center text-sm text-gray-600 dark:text-gray-100 font-normal mt-2 mb-4 tracking-normal">Change Rate</h2>
                     <div class="flex items-center">
                         <svg class="cursor-pointer w-4 mr-1 text-yellow-400 icon icon-tabler icon-tabler-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" fill="none" d="M0 0h24v24H0z" />
