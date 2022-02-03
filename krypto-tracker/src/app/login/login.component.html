@@ -35,10 +35,18 @@
           <h1
             class="mb-4 text-2xl font-bold text-center text-gray-700 dark:text-white"
           >
-            Sign Up
+            Sign In
           </h1>
+          <div  *ngIf="isLoggedIn">
+   
+            <a class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue" routerLink="/learn">
+              Go to Home
+              </a>
+            
+          </div>
           <div>
-            <form [formGroup]="formdata" (ngSubmit)="onSubmit()" novalidate>
+            <form [formGroup]="formdata" *ngIf="!isLoggedIn" name="form"
+            (ngSubmit)="onSubmit()" novalidate>
               <div class="mt-4 form-group">
                 <label class="block text-sm dark:text-white"> Email </label>
                 <input
@@ -46,7 +54,7 @@
                   type="email"
                   class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 dark:bg-grey-800"
                   placeholder="Email Address"
-                  formControlName="email"
+                  formControlName="email" [(ngModel)]="formdata.email"
                 />
                 <div
                   *ngIf="f['email'].touched && f['email'].invalid"
@@ -78,6 +86,7 @@
                   placeholder="Password"
                   formControlName="password"
                   required
+                  [(ngModel)]="formdata.password"
                 />
                 <div
                   *ngIf="f['password'].touched && f['password'].invalid"
@@ -101,9 +110,10 @@
                   type="submit"
                   [disabled]="!formdata.valid"
                 >
-                  Sign Up
+                  Sign In
                 </button>
               </div>
+       
               <div class="mt-4 text-center">
                 <p class="text-sm dark:text-white">
                   Already have an account?

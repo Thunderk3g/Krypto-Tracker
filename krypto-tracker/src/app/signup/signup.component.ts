@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { TokenStorageService } from '../services/token-storage.service';
 import {
   FormGroup,
   FormControl,
@@ -12,10 +14,12 @@ import { PassMatch } from '../_helpers/pass-match.validator';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-    formdata: FormGroup;
+    formdata: any ={}; 
+    accountCreated = false ;   
     submitted = false;
-
-    constructor(private formBuilder: FormBuilder) { }
+    errorMessage = '';
+    data: any;
+    constructor(private formBuilder: FormBuilder ,private apiservice: ApiService) { }
 
     ngOnInit() {
         this.formdata = this.formBuilder.group({
@@ -31,14 +35,21 @@ export class SignupComponent implements OnInit {
 
     get f() { return this.formdata.controls; }
 
-    onSubmit() {
+    onSubmit(): void {
         this.submitted = true;
-
         // stop here if form is invalid
         if (this.formdata.invalid) {
             return;
         }
-
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.formdata.value))
-    }
+        this.apiservice.register(this.formdata).subscribe(
+          (data) => {
+            this.accountCreated = true;
+            this.data = data.body;
+          },
+          (err) => {
+            this.errorMessage = err.error.message;
+          }
+        );
+      }
+    
 }

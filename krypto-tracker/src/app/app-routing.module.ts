@@ -9,7 +9,7 @@ import { SignupComponent } from './signup/signup.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '',  component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'coin/:id', component: CoinDetailsComponent },
