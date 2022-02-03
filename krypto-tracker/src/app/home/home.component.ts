@@ -61,9 +61,8 @@ getDetails(value: any) {
   const symbol = this.li[value].symbol; ;
   const price = this.li[value].price; 
   const change = this.li[value].change;
-  const obj = {name, iconUrl, rank ,btcPrice , marketCap, symbol , price ,change};
-
-  console.log(obj);
+  const uuid = this.li[value].uuid; 
+  const obj = {name, iconUrl, rank ,btcPrice , marketCap, symbol , price ,change,uuid};
   this.data.onPushTable(obj);
 }
 addtoWatchlist(){

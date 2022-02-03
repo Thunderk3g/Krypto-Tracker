@@ -10,7 +10,7 @@ export class DataService {
     constructor() { 
       
     }
-  onPushTable(obj: { name: any; iconUrl: any; rank: any; btcPrice:any ;marketCap: any ; symbol :any; price : any; change: any}) {
+  onPushTable(obj: { name: any; iconUrl: any; rank: any; btcPrice:any ;marketCap: any ; symbol :any; price : any; change: any, uuid:any}) {
     this.data = obj;
   }
   getdata() {

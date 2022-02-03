@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable} from 'rxjs';
 
 const SERVER_API = 'http://localhost:3000/';
@@ -20,6 +20,12 @@ export class ApiService {
   getData() : Observable<any> {
     return this.http.get(SERVER_API + 'getdata',{
       observe: 'response',
+    })
+  }
+  getcoinData(uuid: any) : Observable<any> {
+    console.log(uuid);
+    return this.http.post(SERVER_API + 'getcoinData',{
+      uuid : uuid
     })
   }
   register(user : any): Observable<any> {
