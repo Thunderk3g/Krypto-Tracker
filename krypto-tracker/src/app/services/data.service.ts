@@ -1,16 +1,18 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { ApiService } from './api.service';
 import { Subscription } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  li : any;
   private data: any ;
   invokeAddToWatchList = new EventEmitter();    
   subsVar: Subscription; 
-    constructor() { 
+    constructor(private apiService: ApiService ) { 
       
     }
-  onPushTable(obj: { name: any; iconUrl: any; rank: any; btcPrice:any ;marketCap: any ; symbol :any; price : any; change: any, uuid:any}) {
+  onPushTable(obj: { uuid :any}) {
     this.data = obj;
   }
   getdata() {

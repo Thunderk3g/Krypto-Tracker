@@ -47,22 +47,12 @@ export class HomeComponent implements OnInit {
   }
   getData(){  
     this.apiService.getData().subscribe((data) => {
-    this.li = data.body.data.coins;
-    console.log(this.li);
-    
+    this.li = data.body.data.coins;    
   });
 }
 getDetails(value: any) { 
-  const name = this.li[value].name; 
-  const iconUrl =this.li[value].iconUrl; 
-  const rank = this.li[value].rank;
-  const btcPrice = this.li[value].btcPrice; ;
-  const marketCap = this.li[value].marketCap; ;
-  const symbol = this.li[value].symbol; ;
-  const price = this.li[value].price; 
-  const change = this.li[value].change;
   const uuid = this.li[value].uuid; 
-  const obj = {name, iconUrl, rank ,btcPrice , marketCap, symbol , price ,change,uuid};
+  const obj = {uuid};
   this.data.onPushTable(obj);
 }
 addtoWatchlist(){

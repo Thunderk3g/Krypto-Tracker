@@ -79,8 +79,6 @@ exports.getcoinData = async function (req, res, next) {
   axios
     .get("https://api.coinranking.com/v2/coin/"+uuid, { headers })
     .then(async function (response) {
-      var user = response.data;
-      console.log(user);
       res.send(response.data);
     })
     .catch((error) => {

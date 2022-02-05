@@ -23,15 +23,11 @@ export class ApiService {
     })
   }
   getcoinData(uuid: any) : Observable<any> {
-    console.log(uuid);
     return this.http.post(SERVER_API + 'getcoinData',{
       uuid : uuid
     })
   }
   register(user : any): Observable<any> {
-    console.log(user.email);
-    console.log(user.password);
-    console.log(user.phonenumber);
     return this.http.post(SERVER_API + 'signup', {
       email: user.email,
       password: user.password,
