@@ -15,7 +15,7 @@ import { CoinDetailsComponent } from './coin-details/coin-details.component';
 import { LearnComponent } from './learn/learn.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { BuyKryptoComponent } from './buy-krypto/buy-krypto.component';
-
+import { HighchartsChartModule } from 'highcharts-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +34,7 @@ import { BuyKryptoComponent } from './buy-krypto/buy-krypto.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    HighchartsChartModule,
     ReactiveFormsModule,
     NgxPaginationModule
   ],
