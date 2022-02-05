@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import millify from 'millify';
+import {millify} from 'millify';
 import { DataService } from '../services/data.service';
 @Component({
   selector: 'app-home',

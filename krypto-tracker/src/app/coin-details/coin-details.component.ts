@@ -20,24 +20,88 @@ export class CoinDetailsComponent {
   marketCap: any;
   description: string;
   iconUrl: any;
+  name: any;
+  price: string;
+  alltime: string;
+  totalsupply: string;
+  symbol: any;
+  change: any;
+  numberofExchanges: any;
+  rank: any;
+  websiteurl: any;
+  coinrankurl: any;
   constructor(private data: DataService, private apiService: ApiService) {
+    
     this.coinData = this.data.getdata();
     this.apiService.getcoinData(this.coinData.uuid).subscribe((res) => {
       this.coin = res.data.coin;
-      this.description = this.coin.description.replace(/(<([^>]+)>)/gi, '');
+      this.name = this.coin.name;
+      this.price =this.coin.price;
+      this.alltime = millify(this.coin.allTimeHigh.price, {
+        precision: 2,  
+        decimalSeparator: "."
+      });
+      this.totalsupply = millify(this.coin.supply.total , {
+        precision: 2,  
+        decimalSeparator: "."
+      });
+      this.description = this.coin.description.replace(/<.*?>/g, '').replace(/&lsquo;/g,"'").replace(/&rsquo;/g,"'");
       this.iconUrl = this.coin.iconUrl;
-      this.marketCap = this.coin.marketCap;
+      this.symbol = this.coin.symbol;
+      this.change = this.coin.change;
+      this.rank = this.coin.rank;
+      this.websiteurl = this.coin.websiteUrl;
+      this.coinrankurl = this.coin.coinrankingUrl;
+      this.numberofExchanges = this.coin.numberOfExchanges
+      this.marketCap = millify(this.coin.marketCap, {
+        precision: 2,  
+        decimalSeparator: "."
+      });
       this.sparkline = this.coin.sparkline.toString().split(',').map(Number);
       this.chartOptions = {
+        title: {
+          text: ''
+        },
+        subtitle: {
+          text: ''
+      },
+        yAxis: {
+          title: {
+              text: 'Price'
+          },
+      },
+      xAxis: {
+        labels: {
+          enabled:false,
+        },
+        accessibility: {
+            rangeDescription: 'Range: 0 to 20'
+        }
+    },
         series: [
           {
+            name:this.coin.name+'Price',
             type: 'line',
             data: this.sparkline
           },
         ],
+        plotOptions: {
+          series: {
+              color: '#16C784',
+              marker: {
+                  enabled: false
+              }
+          }
+      },
+        legend: {
+          layout: 'horizontal',
+          align: 'center',
+          verticalAlign: 'bottom'
+      }
       };
       console.log(this.coin.sparkline);
     });
  
   }
+  
 }

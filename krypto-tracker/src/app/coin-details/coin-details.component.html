@@ -1,9 +1,83 @@
 <app-header></app-header>
-<div style=" display:flex; justify-content: center; align-items: center; flex-direction: column;">
-    <highcharts-chart 
-      [Highcharts]="Highcharts"
-      [options]="chartOptions"
-      >
-    </highcharts-chart>
+<div class="w-full bg-gray-200 dark:bg-gray-900 py-10">
+  <div class="container mx-auto px-6 flex items-start justify-center">
+      <div class="w-full">
+          <!-- Card is full width. Use in 12 col grid for best view. -->
+          <!-- Card code block start -->
+          <div class="mx-auto w-full p-5 lg:p-10 bg-white dark:bg-gray-800 shadow rounded">
+              <div class="grid grid-cols-3 lg:flex-row items-start lg:items-center mb-8">
+                <div class="w-full"> <h1 class="text-xl mr-5 lg:text-2xl text-gray-800 dark:text-gray-100 font-bold ">{{name}}</h1></div> 
+                <div class="w-full"> <h1 class="text-indigo-700 dark:text-indigo-600 leading-6 text-sm">Price</h1>
+                 <h2 class="text-xl lg:text-2xl text-gray-800 dark:text-gray-100 font-bold">${{price | number : '1.2-2'}}</h2> 
+                 <a href="#" class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                        <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                      </svg>
+                    {{change}}%
+                  </a>
+                </div> 
+                  <a href ="{{websiteurl}}"> <div class="mt-4 lg:mt-0 mr-0 xl:mr-8 text-sm bg-indigo-100 text-indigo-700 dark:text-indigo-600 rounded font-medium py-2 w-48 flex justify-center">Website</div></a>
+              </div>
+              <div class="flex flex-col lg:flex-row items-start lg:items-center">
+                  <div class="w-full lg:w-1/2 pr-0 lg:pr-48">
+                      <div class="flex items-center">
+                          <div class="w-8 h-8 rounded">
+                              <img class="w-full h-full overflow-hidden object-cover rounded object-center" src="{{iconUrl}}" alt="logo" />
+                          </div>
+                          <div class="ml-2">
+                              <h5 class="text-gray-800 dark:text-gray-100 font-medium text-base">{{symbol}}</h5>
+                          </div>
+                      </div>
+                      <a href ="{{coinrankurl}}" class="mt-5 text-sm text-blue-600 dark:text-gray-400 font-normal">{{coinrankurl}}</a>
+                  </div>
+                  <div class="lg:pl-8 w-full lg:w-1/2 flex flex-col lg:flex-row items-start lg:items-center">
+                      <div class="mr-12 flex lg:block items-center lg:mr-6 xl:mr-12 mt-5 lg:mt-0">
+                          <h5 class="text-gray-600 dark:text-gray-400 font-bold text-xl lg:text-2xl leading-6 mb-1 lg:text-center">{{totalsupply}}</h5>
+                          <p class="ml-2 lg:ml-0 text-gray-800 dark:text-gray-100 text-xl leading-5 text-center">Total Supply</p>
+                      </div>
+                      <div class="mr-12 flex lg:block lg:mr-6 xl:mr-12 mt-5 lg:mt-0">
+                          <h5 class="text-gray-600 dark:text-gray-400 font-bold text-xl lg:text-2xl leading-6 mb-1 lg:text-center">{{numberofExchanges}}</h5>
+                          <p class="ml-2 lg:ml-0 text-gray-800 dark:text-gray-100 text-xl leading-5 text-center">Number of Exchanges</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="relative">
+                  <hr class="mt-8 mb-8 lg:mb-10 h-1 rounded bg-gray-200" />
+                  <hr class="absolute top-0 h-1 w-full rounded bg-indigo-400" />
+              </div>
+              <div class="flex flex-col lg:flex-row items-start lg:items-center">
+                  <div class="flex flex-col lg:flex-row w-full lg:w-2/3 items-start lg:items-center mb-8 lg:mb-0">
+                      <div class="mr-24 flex lg:block flex-row-reverse items-center mb-4 lg:mb-0">
+                          <h3 class="text-indigo-700 dark:text-indigo-600 leading-6 text-lg">MarketCap</h3>
+                          <h2 class="mr-2 lg:mr-0 text-gray-600 dark:text-gray-400 text-xl lg:text-2xl font-bold">${{marketCap}}</h2>
+                      </div>
+                      <div class="flex lg:block flex-row-reverse items-center">
+                          <h3 class="text-indigo-700 dark:text-indigo-600 leading-6 text-lg">All Time High Price</h3>
+                          <h2 class="mr-2 lg:mr-0 text-gray-600 dark:text-gray-400 text-xl lg:text-2xl font-bold">${{alltime}}</h2>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- Card code block end -->
+          <div class="mx-auto w-full p-5 lg:p-10 bg-white dark:bg-gray-800 shadow rounded">
+            <div  class= "grid grid-cols-2 gap-4">
+            <div>
+            <highcharts-chart 
+              [Highcharts]="Highcharts"
+              [options]="chartOptions"
+              >
+            </highcharts-chart>
+            </div>
+            <div>
+          {{description}}
+            </div>
+          </div>
+      </div>
+      
+    
   </div>
+  
+</div>
+
+
 <app-footer></app-footer>
