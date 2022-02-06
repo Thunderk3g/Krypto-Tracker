@@ -1,16 +1,130 @@
-
 <app-header></app-header>
-<form (submit)='AddTodo()'>  
-    <input    
-        type="text"    
-        name="inputTodo"    
-        placeholder="Enter ToDo Text Here For Test....."    
-        class="todo-input"[(ngModel)]="inputTodo">  
-        <input type="submit" value="Add Todo" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded todo-submit" >  
-        </form>  
-        <div *ngFor="let todo of todos; let i = index;"  class=" block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 todo {{(todo.completed ? 'done' : '' )}}">  
-            <div class=" mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white id">{{i}}</div>  
-            <div class=" font-normal text-gray-700 dark:text-gray-400 content" (click)="toggleDone(i)">{{todo.content}}</div>  
-            <button class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded delete" (click)="deleteTodo(i)">remove</button>  
-        </div>    
+<div class="main-container content-center bg-gray-50 dark:bg-dark-grey ">
+  <div *ngIf="currentUser; else loggedOut">
+    <div class="flex items-center justify-center h-full bg-gray-50 dark:bg-dark-grey">
+      <div class="w-full flex items-center justify-center bg-gray-50 dark:bg-dark-grey">
+          <div class="py-4 sm:py-6 md:py-8 bg-transparent rounded-lg h-full" >
+            <div class="w-full md:grid-cols-2 mt-2 mb-20  h-full  rounded-lg lg:grid-cols-3 px-4 py-12 xl:px-10 gap-y-8 gap-x-12 2xl:gap-x-28 mt-2 bg-white" *ngFor="let item of li ; index as i ">
+              <div class ="  h-full grid grid-cols-2 items-center justify-center">
+              <div class=" flex items-center h-full justify-center mt-5">
+                <div class="flex flex-col items-center">
+                  <img
+                  class="inline object-cover pl-2 w-12 h-12 mr-2 rounded-full"
+                  src="{{li[i].iconUrl}}"
+                  alt="Profile image"
+                />
+                </div>
+                <div class="flex flex-col items-center">
+                  <p class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800 dark:text-white">{{li[i].name}}</p>
+                </div>  
+              </div>
+              <div class=" flex items-center h-full justify-center mt-5">
+                <div class="relative top-0 right-5 ">
+                  <a href="#" class="bg-green-500 hover:bg-green-400 border-b-4 border-green-700 hover:border-green-500 text-white text-center py-2 px-4 rounded">
+                    Purchase
+                  </a>
+                </div>
+                <div class="relative top-0 right-0 ">
+                  <a href="#" class="bg-red-500 hover:bg-red-400 border-b-4 border-red-700 hover:border-red-500 text-white text-center py-2 px-4 rounded">
+                    Delete
+                  </a>
+                </div>
+              </div>
+              </div>
+              <div class ="  h-full grid grid-cols-3 items-center justify-center">
+              <div class="w-full">
+                    <p class="text-xs md:text-sm font-medium leading-none text-gray-500 uppercase">Change</p>
+                    <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-3 text-gray-800 mt-3 md:mt-5">{{li[i].change}}%</p>
+                    <div class="flex flex-col md:w-64">
+                        <div class="w-full flex justify-end">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 3.33334V12.6667" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12 7.33334L8 3.33334" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M4 7.33334L8 3.33334" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                                <p class="text-xs leading-none text-green-600">4.3%</p>
+                            </div>
+                        </div>
+                        <div class="mt-2.5">
+                            <div class="w-full h-1 bg-gray-200 rounded-full">
+                                <div class="w-1/2 h-1 bg-blue-500 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-1.5 text-xs leading-3 text-gray-400">Yearly target</p>
+                </div>
+                <div class="w-full">
+                    <p class="text-xs md:text-sm font-medium leading-none text-gray-500 uppercase">Price</p>
+                    <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-3 text-gray-800 mt-3 md:mt-5">${{li[i].price | number : '1.3-3'}}</p>
+                    <div class="flex flex-col">
+                        <div class="h-4"></div>
+                        <div class="md:w-64 mt-2.5">
+                            <div class="w-full h-1 bg-gray-200 rounded-full">
+                                <div class="w-40 h-1 bg-lime-500 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-1.5 text-xs leading-3 text-gray-400">Yearly target</p>
+                </div>
+                <div class="w-full">
+                    <p class="text-xs md:text-sm font-medium leading-none text-gray-500 uppercase">Market Cap</p>
+                    <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-3 text-gray-800 mt-3 md:mt-5">${{li[i].marketcap | number:'1.0':'en-US'}}</p>
+                    <div class="flex flex-col md:w-64">
+                        <div class="w-full flex justify-end">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 3.33334V12.6667" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12 7.33334L8 3.33334" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M4 7.33334L8 3.33334" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                                <p class="text-xs leading-none text-green-600">9.1%</p>
+                            </div>
+                        </div>
+                        <div class="mt-2.5">
+                            <div class="w-full h-1 bg-gray-200 rounded-full">
+                                <div class="w-44 h-1 bg-yellow-500 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-1.5 text-xs leading-3 text-gray-400">Yearly target</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+  <div class ="flex items-center justify-centerbg-gray-50 dark:bg-dark-grey">
+  <ng-template #loggedOut>
+    <div class="flex justify-center py-12 sm:px-6 px-4">
+      <div
+        class="max-w-2xl rounded shadow bg-white dark:bg-grey-blue text-center py-6 pl-6 pr-12"
+      >
+        <div class="md:inline-block items-center pb-10">
+          <img
+            class="inline object-cover pl-2 w-20 h-20 mr-2 rounded-full"
+            src="https://avatars.dicebear.com/api/bottts/potato.svg"
+            alt="Profile image"
+          />
+        </div>
+        <div class="md:inline-block text-center pt-10">
+          <p
+            class="text-lg font-semibold text-center leading-4 text-gray-800 dark:text-gray-100 pb-5"
+          >
+            You need to Login befire you can create a Watchlist
+          </p>
+          <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"   routerLink="/login">
+            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    Login
+            </span>
+          </button>
+        </div>
+      </div>
+  
+    </div>
+  
+  </ng-template>
+  </div>
+</div>
 <app-footer></app-footer>

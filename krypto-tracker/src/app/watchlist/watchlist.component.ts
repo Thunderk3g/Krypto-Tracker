@@ -1,45 +1,38 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { TokenStorageService } from '../services/token-storage.service';
+import {millify} from 'millify';
 
 @Component({
   selector: 'app-watchlist',
   templateUrl: './watchlist.component.html',
   styleUrls: ['./watchlist.component.css']
 })
-export class WatchlistComponent  {
-  inputTodo:string='';  
-  title='todo app';  
-  todos: any[] =[];  
-  
-  constructor() { }  
+export class WatchlistComponent  { 
+  currentToken: any;
+  tokenStorageService: any;
+  data: any;
+  li:any[] =[];
+  currentUser: any;
+  constructor(
+    private apiService: ApiService,
+    private token: TokenStorageService
+
+  ) {
+  }  
   
   ngOnInit(): void {  
-    this.todos = [  
-      {  
-        content:'first todo',  
-        completed:false  
-      },  
-      {  
-        content:'second todo',  
-        completed:true  
-      }  
-    ]  
+    this.currentUser = this.token.getUser();
+    this.currentToken = this.token.getToken();
+    this.getFav();
   }  
-toggleDone(id:number){  
-  this.todos.map((v,i) =>{  
-    if(i==id) v.completed = !v.completed;  
-    return v;  
-  })  
-}  
-deleteTodo(id:number){  
-  this.todos = this.todos.filter((v , i) => i !==id);  
-  
-  
-}  
-AddTodo(){  
-  this.todos.push({  
-    content:this.inputTodo,  
-    completed:false  
-  });  
-  this.inputTodo="";  
-}  
+getFav(){
+  this.apiService.getfav({
+    userId: this.currentToken
+  }).subscribe((data) => {
+    this.li = data;
+
+    console.log(data);
+  });
+}
 }

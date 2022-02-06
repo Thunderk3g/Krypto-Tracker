@@ -5,6 +5,7 @@ const Role = db.role;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 const axios = require('axios');
+const Favourite = require("../models/favourite.model");
 const headers = {
   "x-access-token":
     "coinranking364e1de9aee4e6296b82b66b4d7d53f44ccdab4df5e455f2",
@@ -85,3 +86,31 @@ exports.getcoinData = async function (req, res, next) {
       console.error(error);
     });
 };
+
+/*Add to Favourites*/
+exports.fav = (req, res) => {
+  const fav = new Favourite({
+    iconUrl: req.body.iconUrl,
+    name: req.body.name,
+    change: req.body.change,
+    price: req.body.price,
+    marketcap: req.body.marketcap,
+    userId: req.body.userId,
+    isFav: true,
+  });
+
+  fav.save((err) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+    res.send({ message: "Added to favourite successfully!" });
+  });
+};
+
+/*View Favourites*/
+exports.getfav = async function(req, res, next) {
+  const getfav = await Favourite.find({isFav:true,userId:req.body.userId}).sort({createdAt: -1});
+  console.log(getfav);
+  res.send(JSON.stringify(getfav));
+}

@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiService {
-
+  cuurentToken: any;
 
   constructor(private http: HttpClient) { }
 
@@ -39,6 +39,22 @@ export class ApiService {
     return this.http.post(SERVER_API + 'signin', {
       email: credentials.email,
       password: credentials.password
+    }, httpOptions);
+  }
+  addtofav(user : any ): Observable<any> {
+    return this.http.post(SERVER_API + 'fav', {
+    iconUrl: user.iconUrl,
+    name: user.name,
+    change: user.change,
+    price: user.price,
+    marketcap: user.marketcap,
+    userId: user.userId,
+    isFav: user.isFav,
+    }, httpOptions);
+  }
+  getfav(user : any ): Observable<any> {
+    return this.http.post(SERVER_API + 'getfav', {
+    userId: user.userId,
     }, httpOptions);
   }
 }

@@ -19,4 +19,12 @@ module.exports = function(app) {
   );
 /*Admin Signin*/
   app.post("/signin", controller.signin);
+  
+/*Add to Favourite*/
+app.post("/fav", controller.fav);
+
+/*Display Favourites*/
+app.post("/getfav", controller.getfav);
 };
+
+

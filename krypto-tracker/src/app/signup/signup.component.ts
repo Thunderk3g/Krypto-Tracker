@@ -16,6 +16,7 @@ import { PassMatch } from '../_helpers/pass-match.validator';
 export class SignupComponent implements OnInit {
     formdata: any ={}; 
     accountCreated = false ;   
+    errorCreated = false ;   
     submitted = false;
     errorMessage = '';
     data: any;
@@ -47,6 +48,7 @@ export class SignupComponent implements OnInit {
             this.data = data.body;
           },
           (err) => {
+            this.errorCreated = true;
             this.errorMessage = err.error.message;
           }
         );

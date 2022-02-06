@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import {millify} from 'millify';
 import { DataService } from '../services/data.service';
+import { TokenStorageService } from '../services/token-storage.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,11 +18,13 @@ export class HomeComponent implements OnInit {
   totalExchanges: any;
   public value: string;
   message: string;
-  constructor(private apiService: ApiService , private http: HttpClient , private data:DataService) { 
+  currentToken: any;
+  constructor(private apiService: ApiService , private http: HttpClient , private data:DataService,private token: TokenStorageService) { 
     this.li = [];
   }
 
   ngOnInit() {
+  this.currentToken = this.token.getToken();
   this.getTotal();
   this.getData();
 }
@@ -55,8 +58,19 @@ getDetails(value: any) {
   const obj = {uuid};
   this.data.onPushTable(obj);
 }
-addtoWatchlist(){
-  alert( 'Hello ' + '\n Added to Watchlist');    
+addtoWatchlist(value:any){
+    alert( 'Hello ' + '\n Added to Watchlist');    
+
+  this.apiService.addtofav({
+    iconUrl: this.li[value].iconUrl,
+    name: this.li[value].name,
+    change: this.li[value].change,
+    price: this.li[value].price,
+    marketcap:this.li[value].marketCap,
+    userId: this.currentToken
+  }).subscribe((data) => {
+    this.data = data.body;
+  });
 }
 }
 

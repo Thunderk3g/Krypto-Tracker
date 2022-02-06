@@ -15,7 +15,7 @@ import {
 
 export class LoginComponent implements OnInit {
   formdata: any ={};
-  
+  errorCreated = false ;   
   submitted = false;
   isLoggedIn = false;
   errorMessage = '';
@@ -46,13 +46,16 @@ export class LoginComponent implements OnInit {
   
   
     this.apiservice.login(this.formdata).subscribe(
-      (data) => {
+      (data) => {      
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
         this.isLoggedIn = true;
+        window.location.reload();
+
       },
 
       (err) => {
+        this.errorCreated = true;
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }

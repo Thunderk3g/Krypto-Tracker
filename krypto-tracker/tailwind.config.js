@@ -15,7 +15,7 @@ module.exports = {
   },
   plugins: [require('@tailwindcss/forms'),
 
-    require('@themesberg/flowbite/plugin')
-
+    require('@themesberg/flowbite/plugin'),
+    require('tailwindcss-flexbox-order')(),
 ],
 }
