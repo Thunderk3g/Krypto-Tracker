@@ -28,11 +28,22 @@ export class WatchlistComponent  {
   }  
 getFav(){
   this.apiService.getfav({
-    userId: this.currentToken
+    userId: this.currentUser.email
   }).subscribe((data) => {
     this.li = data;
 
     console.log(data);
   });
+}
+delFav(index:any){
+  this.apiService.delfav({
+    userId: this.currentUser.email,
+    name:this.li[index].name
+  }).subscribe((data) => {
+    this.li = data;
+    console.log(data);
+  });
+  window.location.reload();
+
 }
 }

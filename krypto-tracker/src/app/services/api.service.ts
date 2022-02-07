@@ -57,4 +57,10 @@ export class ApiService {
     userId: user.userId,
     }, httpOptions);
   }
+  delfav(user : any ): Observable<any> {
+    return this.http.post(SERVER_API + 'delfav', {
+    userId: user.userId,
+    name:user.name
+    }, httpOptions);
+  }
 }

@@ -114,3 +114,10 @@ exports.getfav = async function(req, res, next) {
   console.log(getfav);
   res.send(JSON.stringify(getfav));
 }
+
+/*Delete Favourites*/
+exports.delfav = async function(req, res, next) {
+  const getfav = await Favourite.findOneAndDelete({isFav:true,userId:req.body.userId,name:req.body.name}).sort({createdAt: -1});
+  console.log(getfav);
+  res.send(JSON.stringify(getfav));
+}

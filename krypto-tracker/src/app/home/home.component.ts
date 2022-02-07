@@ -18,13 +18,13 @@ export class HomeComponent implements OnInit {
   totalExchanges: any;
   public value: string;
   message: string;
-  currentToken: any;
+  currentUser:any;
   constructor(private apiService: ApiService , private http: HttpClient , private data:DataService,private token: TokenStorageService) { 
     this.li = [];
   }
 
   ngOnInit() {
-  this.currentToken = this.token.getToken();
+  this.currentUser = this.token.getUser();
   this.getTotal();
   this.getData();
 }
@@ -67,7 +67,7 @@ addtoWatchlist(value:any){
     change: this.li[value].change,
     price: this.li[value].price,
     marketcap:this.li[value].marketCap,
-    userId: this.currentToken
+    userId: this.currentUser.email
   }).subscribe((data) => {
     this.data = data.body;
   });

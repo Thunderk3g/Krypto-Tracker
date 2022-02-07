@@ -25,6 +25,8 @@ app.post("/fav", controller.fav);
 
 /*Display Favourites*/
 app.post("/getfav", controller.getfav);
-};
 
+/*Delete Favourite*/
+app.post("/delfav",controller.delfav);
+};
 
