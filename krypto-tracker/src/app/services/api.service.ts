@@ -63,4 +63,21 @@ export class ApiService {
     name:user.name
     }, httpOptions);
   }
+  addNFT(user : any , userId : any ): Observable<any> {
+    console.log(user.name);
+    console.log(user.price);
+    console.log(user.icon);
+    console.log(userId);
+    return this.http.post(SERVER_API + 'addnft', {
+    name: user.name,
+    price: user.price,
+    iconUrl:user.icon,
+    userId: userId
+    }, httpOptions);
+  }
+  getNFT(user : any ): Observable<any> {
+    return this.http.post(SERVER_API + 'getnft', {
+    userId: user.userId,
+    }, httpOptions);
+  }
 }

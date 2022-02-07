@@ -5,6 +5,7 @@ import { CoinDetailsComponent } from './coin-details/coin-details.component';
 import { HomeComponent } from './home/home.component';
 import { LearnComponent } from './learn/learn.component';
 import { LoginComponent } from './login/login.component';
+import { NftComponent } from './nft/nft.component';
 import { SignupComponent } from './signup/signup.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'coin/:id', component: CoinDetailsComponent },
   { path: 'learn', component: LearnComponent },
   { path: 'watchlist', component: WatchlistComponent },
+  { path: 'nft', component: NftComponent },
   { path: 'buy-krypto', component: BuyKryptoComponent },
 ];
 

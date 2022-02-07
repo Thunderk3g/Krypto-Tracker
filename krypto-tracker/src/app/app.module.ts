@@ -16,6 +16,7 @@ import { LearnComponent } from './learn/learn.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { BuyKryptoComponent } from './buy-krypto/buy-krypto.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { NftComponent } from './nft/nft.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { HighchartsChartModule } from 'highcharts-angular';
     CoinDetailsComponent,
     LearnComponent,
     WatchlistComponent,
-    BuyKryptoComponent
+    BuyKryptoComponent,
+    NftComponent
   ],
   imports: [
     BrowserModule,
