@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
   getData(){  
     this.apiService.getData().subscribe((data) => {
     this.li = data.body.data.coins;    
+    console.log(this.li);
   });
 }
 getDetails(value: any) { 

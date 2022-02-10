@@ -6,6 +6,7 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 const axios = require('axios');
 const Favourite = require("../models/favourite.model");
+const NFT = require("../models/nft.model");
 const headers = {
   "x-access-token":
     "coinranking364e1de9aee4e6296b82b66b4d7d53f44ccdab4df5e455f2",
@@ -118,6 +119,28 @@ exports.getfav = async function(req, res, next) {
 /*Delete Favourites*/
 exports.delfav = async function(req, res, next) {
   const getfav = await Favourite.findOneAndDelete({isFav:true,userId:req.body.userId,name:req.body.name}).sort({createdAt: -1});
-  console.log(getfav);
   res.send(JSON.stringify(getfav));
+}
+
+/*Add NFT */
+exports.addnft = (req, res) => {
+  const nft = new NFT({
+    name: req.body.name,
+    price: req.body.price,
+    iconUrl: req.body.iconUrl,
+    userId: req.body.userId,
+  });
+  nft.save((err) => {
+    if (err) {
+      console.log(res);
+      res.status(500).send({ message: err });
+      return;
+    }
+    res.send({ message: "Added to NFT successfully!" });
+  });
+};
+ /*Retrieve NFT */
+ exports.getnft = async function(req, res, next) {
+  const getnft = await NFT.find({userId:req.body.userId}).sort({createdAt: -1});
+  res.send(JSON.stringify(getnft));
 }

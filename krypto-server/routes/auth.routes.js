@@ -28,5 +28,15 @@ app.post("/getfav", controller.getfav);
 
 /*Delete Favourite*/
 app.post("/delfav",controller.delfav);
+
+/*Add NFT*/
+app.post("/addnft",controller.addnft);
+
+/*Display NFT*/
+app.post("/getnft", controller.getnft);
+
 };
+
+
+
 
