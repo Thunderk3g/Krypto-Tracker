@@ -16,14 +16,15 @@ export class NftComponent implements OnInit {
   currentUser: any;
   userId: any;
   li: any;
+  currentToken: string;
   constructor(private formBuilder: FormBuilder,private apiService: ApiService, private token: TokenStorageService ) { }
 
   ngOnInit(): void {
-    
     this.currentUser = this.token.getUser();
-    this.userId = this.currentUser.email
-    this.getnft();
-    console.log(this.userId);
+    if (this.currentUser != null){ 
+      this.userId = this.currentUser.email
+      this.getnft();
+      }
     this.formdata = this.formBuilder.group({
       name: ['', [Validators.required]],
       price: ['', [Validators.required]],

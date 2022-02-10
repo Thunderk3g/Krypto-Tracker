@@ -76,7 +76,6 @@ exports.getdata = async function (req, res, next) {
 };
 
 exports.getcoinData = async function (req, res, next) {
-  console.log(req.body.uuid);
   var uuid = req.body.uuid
   axios
     .get("https://api.coinranking.com/v2/coin/"+uuid, { headers })
@@ -112,7 +111,6 @@ exports.fav = (req, res) => {
 /*View Favourites*/
 exports.getfav = async function(req, res, next) {
   const getfav = await Favourite.find({isFav:true,userId:req.body.userId}).sort({createdAt: -1});
-  console.log(getfav);
   res.send(JSON.stringify(getfav));
 }
 
@@ -132,7 +130,6 @@ exports.addnft = (req, res) => {
   });
   nft.save((err) => {
     if (err) {
-      console.log(res);
       res.status(500).send({ message: err });
       return;
     }

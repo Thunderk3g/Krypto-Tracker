@@ -19,12 +19,15 @@ export class WatchlistComponent  {
     private token: TokenStorageService
 
   ) {
+    this.currentUser = this.token.getUser();
+    this.currentToken = this.token.getToken();
   }  
   
   ngOnInit(): void {  
     this.currentUser = this.token.getUser();
-    this.currentToken = this.token.getToken();
+    if (this.currentUser != null){ 
     this.getFav();
+    }
   }  
 getFav(){
   this.apiService.getfav({
