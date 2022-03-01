@@ -37,6 +37,3 @@ app.post("/getnft", controller.getnft);
 
 };
 
-
-
-

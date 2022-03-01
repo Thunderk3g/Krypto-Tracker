@@ -56,4 +56,5 @@ export class NftComponent implements OnInit {
       console.log(data);
     });
   }
+
 }

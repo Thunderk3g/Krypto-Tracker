@@ -141,3 +141,5 @@ exports.addnft = (req, res) => {
   const getnft = await NFT.find({userId:req.body.userId}).sort({createdAt: -1});
   res.send(JSON.stringify(getnft));
 }
+
+
