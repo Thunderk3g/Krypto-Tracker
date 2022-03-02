@@ -77,10 +77,10 @@ exports.getdata = async function (req, res, next) {
 
 exports.getcoinData = async function (req, res, next) {
   var uuid = req.body.uuid
-  axios
+   axios
     .get("https://api.coinranking.com/v2/coin/"+uuid, { headers })
     .then(async function (response) {
-      res.send(response.data);
+      await res.send(response.data);
     })
     .catch((error) => {
       console.error(error);
@@ -141,5 +141,12 @@ exports.addnft = (req, res) => {
   const getnft = await NFT.find({userId:req.body.userId}).sort({createdAt: -1});
   res.send(JSON.stringify(getnft));
 }
+
+ /*Delete NFT */
+ exports.getnft = async function(req, res, next) {
+  const getnft = await NFT.findOneAndDelete({userId:req.body.userId,name:req.body.name}).sort({createdAt: -1});
+  res.send(JSON.stringify(getnft));
+}
+
 
 
