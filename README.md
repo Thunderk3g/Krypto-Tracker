@@ -23,6 +23,7 @@ Authenticated User
 * Can add profile picture 
 * Can change credentials 
 * Can logout
+* Can connect with MetaMask
 
 # Installation and Use
 Clone the Respository
