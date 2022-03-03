@@ -143,9 +143,9 @@ exports.addnft = (req, res) => {
 }
 
  /*Delete NFT */
- exports.getnft = async function(req, res, next) {
-  const getnft = await NFT.findOneAndDelete({userId:req.body.userId,name:req.body.name}).sort({createdAt: -1});
-  res.send(JSON.stringify(getnft));
+ exports.delnft = async function(req, res, next) {
+  const delnft = await NFT.findOneAndDelete({userId:req.body.userId,name:req.body.name}).sort({createdAt: -1});
+  res.send(JSON.stringify(delnft));
 }
 
 

@@ -33,14 +33,20 @@ export class NftComponent implements OnInit {
   
   }
   showModal = false;
+  showDelete = false;
   toggleModal(){
     this.showModal = !this.showModal;
+  }
+  toggleDelte(){
+    this.showDelete = !this.showDelete;
   }
   onSubmit(){
     this.apiService.addNFT(this.formdata, this.userId ).subscribe(
       (data) => {
         this.data = data.body;
-        alert( 'Hello ' + '\n NFT has been added to your collection');    
+        alert( 'Hello ' + '\n NFT has been added to your collection');   
+        this.showModal = false; 
+        window.location.reload();
       },
       (err) => {
         this.errorCreated = true;
@@ -56,5 +62,14 @@ export class NftComponent implements OnInit {
       console.log(data);
     });
   }
-
+  delFav(index:any){
+    this.apiService.delNFT({
+      userId: this.currentUser.email,
+      name:this.li[index].name
+    }).subscribe((data) => {
+      this.li = data;
+      console.log(data);
+    });
+    window.location.reload();
+  }
 }

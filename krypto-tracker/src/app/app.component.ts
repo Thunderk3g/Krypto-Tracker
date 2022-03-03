@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
-
+import { Spinkit } from 'ng-http-loader'; 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,6 +10,7 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'krpto-tracker';
   tokenStorageService: any;
+  public spinkit = Spinkit;
   constructor(
     private router: Router,
   ) {

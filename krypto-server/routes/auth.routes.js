@@ -35,5 +35,6 @@ app.post("/addnft",controller.addnft);
 /*Display NFT*/
 app.post("/getnft", controller.getnft);
 
+/*Del NFT*/
+app.post("/delnft", controller.delnft);
 };
-

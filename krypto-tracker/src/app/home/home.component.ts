@@ -4,13 +4,13 @@ import { ApiService } from '../services/api.service';
 import {millify} from 'millify';
 import { DataService } from '../services/data.service';
 import { TokenStorageService } from '../services/token-storage.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   li: any[] = [];
   totalMarketCap:any;
   totalCoins :any;
@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
     });
   }
   getData(){  
+    
     this.apiService.getData().subscribe((data) => {
     this.li = data.body.data.coins;    
   });
