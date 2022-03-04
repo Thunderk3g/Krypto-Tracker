@@ -278,8 +278,7 @@
           </li>
         </ul>
       </div>
-      <div class="flex flex-col gap-4 mt-4 w-80 mx-auto" >
-     
+      <div class="flex flex-col gap-4 mt-4 w-80 " >
         <div class="flex" *ngIf="currentUser; else loggedOut">
           <img
             class="inline object-cover pl-2 w-12 h-12 mr-2 rounded-full"
@@ -307,7 +306,11 @@
             </svg>
           </button>
         </div>
-        <ng-template #loggedOut>
+      </div>
+      <div class="flex flex-col gap-4 mt-4 w-80 " style="padding-left: 70px !important;">
+
+      <ng-template #loggedOut>
+     
         <button
           class="rounded-md flex space-x-2 w-full h-10 font-normal text-sm leading-3 text-indigo-700 bg-indigo-600 bg-opacity-0 hover:opacity-100 duration-100 border border-indigo-700 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 duration-150 justify-center items-center"
        >
@@ -319,6 +322,7 @@
           >
           Sign In
         </button>
+    
         </ng-template>
       </div>
     </div>
