@@ -9,6 +9,7 @@ import { TokenStorageService } from '../../services/token-storage.service';
 export class HeaderComponent implements OnInit {
   currentUser: any;
   tokenStorageService: any;
+  
   constructor( private token: TokenStorageService) { }
 
   ngOnInit(): void {
