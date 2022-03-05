@@ -7,16 +7,19 @@ import { TokenStorageService } from '../../services/token-storage.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  menu: boolean = false;
   currentUser: any;
   tokenStorageService: any;
-  constructor( private token: TokenStorageService) { }
+  menuDropdown() {
+    this.menu = !this.menu;
+  }
+  constructor(private token: TokenStorageService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.currentUser = this.token.getUser();
   }
   logout(){
     window.sessionStorage.clear();
     window.location.reload();
   }
-
 }
