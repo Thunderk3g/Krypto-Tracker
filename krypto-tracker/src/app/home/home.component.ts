@@ -12,8 +12,10 @@ import { TokenStorageService } from '../services/token-storage.service';
 })
 export class HomeComponent implements OnInit {
   li: any[] = [];
+  pageOfItems: Array<any>;
   totalMarketCap:any;
   totalCoins :any;
+  p: number;
   total24hVolume: any;
   totalExchanges: any;
   public value: string;
@@ -58,6 +60,9 @@ getDetails(value: any) {
   const uuid = this.li[value].uuid; 
   const obj = {uuid};
   this.data.onPushTable(obj);
+}
+onChangePage(pageOfItems: Array<any>) {
+  this.pageOfItems = pageOfItems;
 }
 addtoWatchlist(value:any){
     alert( 'Hello ' + '\n Added to Watchlist');    
