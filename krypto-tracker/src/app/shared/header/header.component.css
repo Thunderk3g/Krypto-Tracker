@@ -13,7 +13,7 @@
 
   @media only screen 
   and (min-device-width: 320px) 
-  and (max-device-width: 420px)
+  and (max-device-width: 360px)
   and (-webkit-min-device-pixel-ratio: 2) {
     .b001{
       width: 8rem;
@@ -21,9 +21,18 @@
     }
 }
 @media only screen 
+and (min-device-width: 360px) 
+and (max-device-width: 375px)
+and (-webkit-min-device-pixel-ratio: 2) {
+  .b001{
+    width: 8rem;
+    margin-left: 85px;
+  }
+}
+@media only screen 
 and (min-device-width: 420px) 
 and (max-device-width: 725px)
-and (-webkit-min-device-pixel-ratio: 2) {
+and (-webkit-min-device-pixel-ratio: 4) {
   .b001{
     width: 10rem;
     margin-left: 90px;
