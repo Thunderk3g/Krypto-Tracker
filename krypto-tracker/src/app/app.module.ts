@@ -18,6 +18,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import {NgxPaginationModule} from 'ngx-pagination'; 
 import { NftComponent } from './nft/nft.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { NftComponent } from './nft/nft.component';
     LoginComponent,
     SignupComponent,
     CoinDetailsComponent,
+    LoaderComponent,
     LearnComponent,
     WatchlistComponent,
     BuyKryptoComponent,
