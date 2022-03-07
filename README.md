@@ -25,25 +25,3 @@ Authenticated User
 * Can logout
 * Can connect with MetaMask
 
-# Installation and Use
-Clone the Respository
-```sh
-git clone https://github.com/Thunderk3g/Krypto-Tracker
-```
-```SH
-cd frontend
-npm install
-ng serve
-```
-The application will start on http://localhost:4200/
-
-# Configuring the database and starting backend
-
-configure the database and 
-```SH
-cd backend
-npm install
-npm install nodemon
-change env_url to your mongoDB account
-```
-The backend server will start on http://localhost:3000/
