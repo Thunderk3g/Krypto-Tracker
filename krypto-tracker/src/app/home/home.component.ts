@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service';
 import { millify } from 'millify';
 import { DataService } from '../services/data.service';
 import { TokenStorageService } from '../services/token-storage.service';
+import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,10 @@ import { TokenStorageService } from '../services/token-storage.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  Highcharts: typeof Highcharts = Highcharts;
+  chartOptions: Highcharts.Options;
   li: any[] = [];
+  spark:any[] =[];
   pageOfItems: Array<any>;
   totalMarketCap: any;
   totalCoins: any;
@@ -22,19 +26,23 @@ export class HomeComponent implements OnInit {
   message: string;
   showModal = false;
   currentUser: any;
+  i:any;
   constructor(
     private apiService: ApiService,
     private http: HttpClient,
     private data: DataService,
     private token: TokenStorageService
   ) {
+    
     this.li = [];
+    this.getData();
+
   }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
     this.getTotal();
-    this.getData();
+   
   }
   getTotal() {
     this.apiService.getData().subscribe((data) => {
@@ -59,6 +67,87 @@ export class HomeComponent implements OnInit {
   getData() {
     this.apiService.getData().subscribe((data) => {
       this.li = data.body.data.coins;
+      for (let i = 0; i < this.li.length; i++) {
+        this.chartOptions = {chart: {
+          borderWidth: 0,
+          type: 'area',
+          margin: [2, 0, 2, 0],
+          width: 120,
+          height: 20,
+          style: {
+            overflow: 'visible'
+          },
+          // small optimalization, saves 1-2 ms each sparkline
+        },
+        title: {
+          text: ''
+        },
+        credits: {
+          enabled: false
+        },
+        series: [
+          {
+            name:'Price',
+            type: 'line',
+            data: this.li[i].sparkline.toString().split(',').map(Number),
+          },
+        ],
+        xAxis: {
+          labels: {
+            enabled: false
+          },
+          title: {
+            text: null
+          },
+          startOnTick: false,
+          endOnTick: false,
+          tickPositions: []
+        },
+        yAxis: {
+          endOnTick: false,
+          startOnTick: false,
+          labels: {
+            enabled: false
+          },
+          title: {
+            text: null
+          },
+          tickPositions: [0]
+        },
+        legend: {
+          enabled: false
+        },
+        tooltip: {
+          hideDelay: 0,
+          outside: true,
+          shared: true
+        },
+        plotOptions: {
+          series: {
+            animation: false,
+            lineWidth: 1,
+            shadow: false,
+            states: {
+              hover: {
+                lineWidth: 1
+              }
+            },
+            marker: {
+              radius: 1,
+              states: {
+                hover: {
+                  radius: 2
+                }
+              }
+            },
+          },
+          column: {
+            negativeColor: '#910000',
+            borderColor: 'silver'
+          }
+        }
+      }
+      }
     });
   }
   getDetails(value: any) {
@@ -89,4 +178,5 @@ export class HomeComponent implements OnInit {
   toggleModal() {
     this.showModal = !this.showModal;
   }
+  
 }
