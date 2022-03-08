@@ -1,0 +1,15 @@
+.coin-logo{
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+}
+.coin-name{
+    display: inline-block;
+    margin-left: 10px;
+}
+.coin-price{
+    display: inline-block;
+}
+.coin-change{
+  margin-left: 5px;
+}

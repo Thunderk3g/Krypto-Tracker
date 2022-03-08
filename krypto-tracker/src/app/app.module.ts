@@ -19,6 +19,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
 import {NgxPaginationModule} from 'ngx-pagination'; 
 import { NftComponent } from './nft/nft.component';
 import { LoaderComponent } from './shared/loader/loader.component';
+import { Error404Component } from './shared/error404/error404.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { LoaderComponent } from './shared/loader/loader.component';
     LearnComponent,
     WatchlistComponent,
     BuyKryptoComponent,
-    NftComponent
+    NftComponent,
+    Error404Component
     ],
   imports: [
     BrowserModule,

@@ -11,24 +11,33 @@
           class="grid grid-cols-3 lg:flex-row items-start lg:items-center mb-8"
         >
           <div class="w-full">
-            <h1
-              class="text-xl mr-5 lg:text-2xl text-gray-800 dark:text-gray-100 font-bold"
+            <img
+            class="coin-logo overflow-hidden object-cover rounded object-center"
+            src="{{ iconUrl }}"
+            alt="logo"
+          />  <h1
+              class="coin-name text-xl mr-5 lg:text-2xl text-gray-800 dark:text-gray-100 font-bold"
             >
               {{ name }}
             </h1>
+            <span class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:ring-purple-200 dark:focus:ring-purple-800">
+              <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                 {{symbol}}
+              </span>
+            </span>
           </div>
           <div class="w-full">
-            <h1 class="text-indigo-700 dark:text-indigo-600 leading-6 text-sm">
-              Price
+            <h1 class="text-indigo-700 dark:text-indigo-600 leading-6 text-xl">
+              {{ name }}'s Price
             </h1>
             <h2
-              class="text-xl lg:text-2xl text-gray-800 dark:text-gray-100 font-bold"
+              class="coin-price text-xl lg:text-2xl text-gray-800 dark:text-gray-100 font-bold"
             >
               ${{ price | number: "1.2-2" }}
             </h2>
             <a
               href="#"
-              class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded inline-flex items-center"
+              class="coin-change bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded inline-flex items-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

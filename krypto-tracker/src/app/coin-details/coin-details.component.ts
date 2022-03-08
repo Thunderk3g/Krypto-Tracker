@@ -4,6 +4,7 @@ import millify from 'millify';
 import { ApiService } from '../services/api.service';
 import * as Highcharts from 'highcharts';
 import { Options } from 'highcharts';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-coin-details',
@@ -30,10 +31,23 @@ export class CoinDetailsComponent {
   rank: any;
   websiteurl: any;
   coinrankurl: any;
-  constructor(private data: DataService, private apiService: ApiService) {
+  errors: any;
+  constructor(private router:Router,private data: DataService, private apiService: ApiService, private route: ActivatedRoute,) {
+  
+ 
+  }
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if(id !=  null || id != 0){
+    this.getcoinDetails(id);
+    }
+  }
+  
+  getcoinDetails(id:any): void {
     
-    this.coinData = this.data.getdata();
-    this.apiService.getcoinData(this.coinData.uuid).subscribe((res) => {
+    this.apiService.getcoinData(id)
+    .subscribe(
+      res => {
       this.coin = res.data.coin;
       this.name = this.coin.name;
       this.price =this.coin.price;
@@ -99,9 +113,10 @@ export class CoinDetailsComponent {
           verticalAlign: 'bottom'
       }
       };
-      console.log(this.coin.sparkline);
-    });
- 
+    },
+    err => {
+      this.router.navigate(['/404']);
+    },  
+    );
   }
-  
 }
