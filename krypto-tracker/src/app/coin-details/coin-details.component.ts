@@ -23,15 +23,17 @@ export class CoinDetailsComponent {
   iconUrl: any;
   name: any;
   price: string;
-  alltime: string;
+  alltime: any;
   totalsupply: string;
   symbol: any;
   change: any;
   numberofExchanges: any;
   rank: any;
   websiteurl: any;
+  isNeg:boolean=false;
   coinrankurl: any;
   errors: any;
+  percentage: any;
   constructor(private router:Router,private data: DataService, private apiService: ApiService, private route: ActivatedRoute,) {
   
  
@@ -49,12 +51,15 @@ export class CoinDetailsComponent {
     .subscribe(
       res => {
       this.coin = res.data.coin;
+      console.log(this.coin);
       this.name = this.coin.name;
       this.price =this.coin.price;
+      this.rank =this.coin.rank;
       this.alltime = millify(this.coin.allTimeHigh.price, {
         precision: 2,  
         decimalSeparator: "."
       });
+     
       this.totalsupply = millify(this.coin.supply.total , {
         precision: 2,  
         decimalSeparator: "."
@@ -63,6 +68,9 @@ export class CoinDetailsComponent {
       this.iconUrl = this.coin.iconUrl;
       this.symbol = this.coin.symbol;
       this.change = this.coin.change;
+      if(this.change<= 0){
+        this.isNeg = true;
+      }
       this.rank = this.coin.rank;
       this.websiteurl = this.coin.websiteUrl;
       this.coinrankurl = this.coin.coinrankingUrl;
@@ -72,6 +80,7 @@ export class CoinDetailsComponent {
         decimalSeparator: "."
       });
       this.sparkline = this.coin.sparkline.toString().split(',').map(Number);
+      
       this.chartOptions = {
         title: {
           text: ''

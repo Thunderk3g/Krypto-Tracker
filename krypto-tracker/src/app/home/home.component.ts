@@ -67,6 +67,7 @@ export class HomeComponent implements OnInit {
   getData() {
     this.apiService.getData().subscribe((data) => {
       this.li = data.body.data.coins;
+      console.log(this.li); 
       for (let i = 0; i < this.li.length; i++) {
         this.chartOptions = {chart: {
           borderWidth: 0,

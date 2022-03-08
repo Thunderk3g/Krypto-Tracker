@@ -11,5 +11,12 @@
     display: inline-block;
 }
 .coin-change{
-  margin-left: 5px;
+  margin-left: 20px;
+  border-radius: 10px;
+}
+.coin-rank{
+    display: block;
+    border: 5px;
+    background-color: grey;
+    border-radius: 3px;
 }

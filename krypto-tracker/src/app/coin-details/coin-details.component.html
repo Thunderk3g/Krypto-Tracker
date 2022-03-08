@@ -25,6 +25,9 @@
                  {{symbol}}
               </span>
             </span>
+            <span class="coin-rank w-20 text-white pl-3.5 py-2 mt-2 text-xs bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:ring-purple-200 dark:focus:ring-purple-800">
+                Rank #{{rank}}      
+            </span>
           </div>
           <div class="w-full">
             <h1 class="text-indigo-700 dark:text-indigo-600 leading-6 text-xl">
@@ -35,24 +38,37 @@
             >
               ${{ price | number: "1.2-2" }}
             </h2>
-            <a
+             <!--For Negetive Change -->
+            <a *ngIf = "isNeg;else isPos"
               href="#"
-              class="coin-change bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded inline-flex items-center"
+              class="coin-change bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded inline-flex items-center"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-caret-up-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"
-                />
-              </svg>
-              {{ change }}%
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+              <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+            </svg>
+              <p class="pl-2 rounded">{{ change }}%</p>
             </a>
+            <!--For Positive Change -->
+            <ng-template #isPos>
+            <a 
+            href="#"
+            class="coin-change bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded inline-flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-caret-up-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"
+              />
+            </svg>
+            {{ change }}%
+          </a>
+        </ng-template>
           </div>
           <a href="{{ websiteurl }}">
             <div
@@ -62,61 +78,6 @@
             </div></a
           >
         </div>
-        <div class="flex flex-col lg:flex-row items-start lg:items-center">
-          <div class="w-full lg:w-1/2 pr-0 lg:pr-48">
-            <div class="flex items-center">
-              <div class="w-8 h-8 rounded">
-                <img
-                  class="w-full h-full overflow-hidden object-cover rounded object-center"
-                  src="{{ iconUrl }}"
-                  alt="logo"
-                />
-              </div>
-              <div class="ml-2">
-                <h5
-                  class="text-gray-800 dark:text-gray-100 font-medium text-base"
-                >
-                  {{ symbol }}
-                </h5>
-              </div>
-            </div>
-            <a
-              href="{{ coinrankurl }}"
-              class="mt-5 text-sm text-blue-600 dark:text-gray-400 font-normal"
-              >{{ coinrankurl }}</a
-            >
-          </div>
-          <div
-            class="lg:pl-8 w-full lg:w-1/2 flex flex-col lg:flex-row items-start lg:items-center"
-          >
-            <div
-              class="mr-12 flex lg:block items-center lg:mr-6 xl:mr-12 mt-5 lg:mt-0"
-            >
-              <h5
-                class="text-gray-600 dark:text-gray-400 font-bold text-xl lg:text-2xl leading-6 mb-1 lg:text-center"
-              >
-                {{ totalsupply }}
-              </h5>
-              <p
-                class="ml-2 lg:ml-0 text-gray-800 dark:text-gray-100 text-xl leading-5 text-center"
-              >
-                Total Supply
-              </p>
-            </div>
-            <div class="mr-12 flex lg:block lg:mr-6 xl:mr-12 mt-5 lg:mt-0">
-              <h5
-                class="text-gray-600 dark:text-gray-400 font-bold text-xl lg:text-2xl leading-6 mb-1 lg:text-center"
-              >
-                {{ numberofExchanges }}
-              </h5>
-              <p
-                class="ml-2 lg:ml-0 text-gray-800 dark:text-gray-100 text-xl leading-5 text-center"
-              >
-                Number of Exchanges
-              </p>
-            </div>
-          </div>
-        </div>
         <div class="relative">
           <hr class="mt-8 mb-8 lg:mb-10 h-1 rounded bg-gray-200" />
           <hr class="absolute top-0 h-1 w-full rounded bg-indigo-400" />
@@ -125,6 +86,9 @@
           <div
             class="flex flex-col lg:flex-row w-full lg:w-2/3 items-start lg:items-center mb-8 lg:mb-0"
           >
+          <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
+          </div>
             <div
               class="mr-24 flex lg:block flex-row-reverse items-center mb-4 lg:mb-0"
             >
