@@ -25,6 +25,22 @@
 and (min-device-width: 320px) 
 and (max-device-width: 360px)
 and (-webkit-min-device-pixel-ratio: 2) {
+    .coin-high{
+        margin-left:30px;
+      }
+      .coin-marketcap{
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+          margin-top: 50px;
+      }
+      .coin-alltime{
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+      }
  
 }
 @media only screen 
