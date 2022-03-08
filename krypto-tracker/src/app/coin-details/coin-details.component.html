@@ -70,13 +70,7 @@
           </a>
         </ng-template>
           </div>
-          <a href="{{ websiteurl }}">
-            <div
-              class="mt-4 lg:mt-0 mr-0 xl:mr-8 text-sm bg-indigo-100 text-indigo-700 dark:text-indigo-600 rounded font-medium py-2 w-48 flex justify-center"
-            >
-              Website
-            </div></a
-          >
+         
         </div>
         <div class="relative">
           <hr class="mt-8 mb-8 lg:mb-10 h-1 rounded bg-gray-200" />
@@ -89,13 +83,13 @@
           <div class="coin-progress bg-gray-200 w-full lg:w-96 rounded-full h-2.5 dark:bg-gray-700" style="display: inline-block;">
             <div class="bar bg-blue-600 h-2.5 rounded-full " [style.width]="percentage+'%'"></div>
             <div class ="lg:w-96 sm:w-16" style="display: inline-block;">
-              <p class ="pl-2 mr-0 text-sm font-bold dark:text-white" style="display: inline-block;">Low : ${{low |  number : '1.2-2'}}</p>
-              <p class = "pr-2 ml-25 text-sm font-bold dark:text-white" style="display: inline-block; padding-left: 7rem;">High : ${{high| number : '1.2-2'}} </p>
+              <p class ="coin-low pl-2 mr-0 text-sm sm:text-xs font-bold dark:text-white" style="display: inline-block;">Low : ${{low |  number : '1.2-2'}}</p>
+              <p class = "coin-high lg:pr-2 ml-25 lg:pl-20 sm:ml-15 sm:pl-5 text-sm font-bold dark:text-white" style="display: inline-block; ">High : ${{high| number : '1.2-2'}} </p>
             </div>
           </div>
        
             <div
-              class="mr-24 flex lg:block flex-row-reverse items-center mb-4 ml-20 lg:mb-0"
+              class="coin-marketcap mr-24 flex-inline lg:block flex-row-reverse items-center mb-4 ml-20 lg:mb-0"
             >
               <h3
                 class="text-indigo-700 dark:text-indigo-600 leading-6 text-lg"
@@ -108,7 +102,7 @@
                 ${{ marketCap }}
               </h2>
             </div>
-            <div class="flex lg:block flex-row-reverse items-center">
+            <div class="coin-alltime flex lg:block flex-row-reverse items-center">
               <h3
                 class="text-indigo-700 dark:text-indigo-600 leading-6 text-lg"
               >
@@ -125,7 +119,8 @@
         </div>
       </div>
       <!-- Card code block end -->
-      <div
+   <!-- 
+    <div
         class="mx-auto w-full p-5 lg:p-10 bg-white text-black dark:text-white bg-transparent shadow rounded"
       >
         <div class="grid grid-cols-2 gap-4">
@@ -141,6 +136,7 @@
           </div>
         </div>
       </div>
+--> 
     </div>
   </div>
 
