@@ -34,6 +34,8 @@ export class CoinDetailsComponent {
   coinrankurl: any;
   errors: any;
   percentage: any;
+  low: any;
+  high: number;
   constructor(private router:Router,private data: DataService, private apiService: ApiService, private route: ActivatedRoute,) {
   
  
@@ -80,7 +82,9 @@ export class CoinDetailsComponent {
         decimalSeparator: "."
       });
       this.sparkline = this.coin.sparkline.toString().split(',').map(Number);
-      
+      this.low = Number(this.sparkline[0])
+      this.high = Number(this.coin.allTimeHigh.price)
+      this.percentage = (this.low/this.high)*100;
       this.chartOptions = {
         title: {
           text: ''
