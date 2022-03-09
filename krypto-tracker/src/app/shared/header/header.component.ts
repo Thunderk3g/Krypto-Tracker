@@ -9,6 +9,7 @@ import { TokenStorageService } from '../../services/token-storage.service';
 export class HeaderComponent implements OnInit {
   menu: boolean = false;
   currentUser: any;
+  username:any;
   tokenStorageService: any;
   isOpenedList: any;
   openMenu(source: any) {
@@ -24,6 +25,8 @@ closeMenu() {
 
   ngOnInit(){
     this.currentUser = this.token.getUser();
+    this.username = this.currentUser.email.match(/(.+)@/)[1]
+
   }
   logout(){
     window.sessionStorage.clear();
