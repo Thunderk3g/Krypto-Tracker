@@ -10,6 +10,13 @@ export class HeaderComponent implements OnInit {
   menu: boolean = false;
   currentUser: any;
   tokenStorageService: any;
+  isOpenedList: any;
+  openMenu(source: any) {
+    this.isOpenedList = source;
+}
+closeMenu() {
+    this.isOpenedList = -1;
+}
   menuDropdown() {
     this.menu = !this.menu;
   }
