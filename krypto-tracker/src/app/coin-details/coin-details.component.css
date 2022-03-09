@@ -74,7 +74,7 @@ and (min-device-width: 375px)
 and (max-device-width: 425px)
 and (-webkit-min-device-pixel-ratio: 2) {
 .coin-high{
-  margin-left:58px;
+  margin-left:70px;
 }
 .coin-marketcap{
     display: block;
@@ -109,4 +109,14 @@ and (-webkit-min-device-pixel-ratio: 2) {
 .coin-rank{
     margin-left: 25px;
 }
+}
+
+.limitTextHeight {
+    height: 100px;
+    overflow: hidden;
+}
+.readmore{
+    color: red;
+    padding: 0px;
+    margin: 0px;
 }

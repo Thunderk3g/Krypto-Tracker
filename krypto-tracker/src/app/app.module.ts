@@ -16,7 +16,6 @@ import { WatchlistComponent } from './watchlist/watchlist.component';
 import { BuyKryptoComponent } from './buy-krypto/buy-krypto.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgHttpLoaderModule } from 'ng-http-loader';
-import {NgxPaginationModule} from 'ngx-pagination'; 
 import { NftComponent } from './nft/nft.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { Error404Component } from './shared/error404/error404.component';

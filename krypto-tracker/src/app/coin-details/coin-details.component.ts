@@ -36,6 +36,7 @@ export class CoinDetailsComponent {
   percentage: any;
   low: any;
   high: number;
+  isReadMore:boolean=true;
   constructor(private router:Router,private data: DataService, private apiService: ApiService, private route: ActivatedRoute,) {
   
  
@@ -132,4 +133,7 @@ export class CoinDetailsComponent {
     },  
     );
   }
+  showText() {
+    this.isReadMore = !this.isReadMore
+ }
 }
