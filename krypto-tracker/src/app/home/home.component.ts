@@ -74,6 +74,7 @@ export class HomeComponent implements OnInit {
           type: 'area',
           margin: [2, 0, 2, 0],
           width: 120,
+          backgroundColor: 'rgba(0,0,0,0)',
           height: 20,
           style: {
             overflow: 'visible'
