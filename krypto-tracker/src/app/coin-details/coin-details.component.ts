@@ -3,7 +3,6 @@ import { DataService } from '../services/data.service';
 import millify from 'millify';
 import { ApiService } from '../services/api.service';
 import * as Highcharts from 'highcharts';
-import { Options } from 'highcharts';
 import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -14,7 +13,6 @@ import { Router,ActivatedRoute } from '@angular/router';
 export class CoinDetailsComponent {
   Highcharts: typeof Highcharts = Highcharts;
   sparkline : any;
-  chartOptions: Highcharts.Options;
   coinData: any;
   uuid: any;
   coin: any;
@@ -86,47 +84,49 @@ export class CoinDetailsComponent {
       this.low = Number(this.sparkline[0])
       this.high = Number(this.coin.allTimeHigh.price)
       this.percentage = (this.low/this.high)*100;
-      this.chartOptions = {
-        title: {
-          text: ''
+
+     var chart = new Highcharts.Chart({
+      chart: {
+        renderTo: 'chart',
+        margin: 0,       
+        backgroundColor: 'rgba(0,0,0,0)'
+       },
+  
+      title: {
+        text: 'Last 24 Hr Price'
+      },
+  
+      subtitle: {
+        text: ''
+      },
+  
+      rangeSelector: {
+        selected: 1
+      },
+      series: [{
+        data: this.sparkline,
+        type: 'area',
+        threshold: null,
+        marker: {
+          enabled: false
+      },
+        tooltip: {
+          valueDecimals: 2
         },
-        subtitle: {
-          text: ''
-      },
-        yAxis: {
-          title: {
-              text: 'Price'
+        color: {
+          linearGradient: {
+              x1: 0,
+              x2: 0,
+              y1: 0,
+              y2: 1
           },
-      },
-      xAxis: {
-        labels: {
-          enabled:false,
-        },
-        accessibility: {
-            rangeDescription: 'Range: 0 to 20'
-        }
-    },
-        series: [
-          {
-            name:this.coin.name+'Price',
-            type: 'line',
-            data: this.sparkline
-          },
-        ],
-        plotOptions: {
-          series: {
-              color: '#16C784',
-              marker: {
-                  enabled: false
-              }
-          }
-      },
-        legend: {
-          layout: 'horizontal',
-          align: 'center',
-          verticalAlign: 'bottom'
+          stops: [
+              [0, '#02a388'],
+              [1, '#f9f9f9']
+          ]
       }
-      };
+      }],
+     })
     },
     err => {
       this.router.navigate(['/404']);
