@@ -70,11 +70,11 @@ and (-webkit-min-device-pixel-ratio: 2) {
 }
 }
 @media only screen 
-and (min-device-width: 380px) 
+and (min-device-width: 375px) 
 and (max-device-width: 425px)
 and (-webkit-min-device-pixel-ratio: 2) {
 .coin-high{
-  margin-left:100px;
+  margin-left:58px;
 }
 .coin-marketcap{
     display: block;
