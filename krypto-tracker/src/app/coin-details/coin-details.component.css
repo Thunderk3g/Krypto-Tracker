@@ -25,9 +25,7 @@
 and (min-device-width: 320px) 
 and (max-device-width: 360px)
 and (-webkit-min-device-pixel-ratio: 2) {
-    .coin-high{
-        margin-left:30px;
-      }
+
       .coin-marketcap{
           display: block;
           margin-left: auto;
@@ -62,5 +60,51 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+.coin-logo{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+}
+@media only screen 
+and (min-device-width: 380px) 
+and (max-device-width: 425px)
+and (-webkit-min-device-pixel-ratio: 2) {
+.coin-high{
+  margin-left:93px;
+}
+.coin-marketcap{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 50px;
+}
+.coin-alltime{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.coin-p001{
+    margin-left:35px;
+    margin-top:9px;
+}
+.coin-change{
+    margin-top: 10px;
+    margin-left: 5px;
+}
+.coin-logo{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+.coin-symbol{
+    margin-top: 20px;
+    margin-left: 25px;
+}
+.coin-rank{
+    margin-left: 25px;
 }
 }

@@ -20,7 +20,7 @@
             >
               {{ name }}
             </h1>
-            <span class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:ring-purple-200 dark:focus:ring-purple-800">
+            <span class="coin-symbol relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:ring-purple-200 dark:focus:ring-purple-800">
               <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                  {{symbol}}
               </span>
@@ -29,8 +29,8 @@
                 Rank #{{rank}}      
             </span>
           </div>
-          <div class="w-full">
-            <h1 class="text-indigo-700 dark:text-white leading-6 text-xl">
+          <div class="coin-p001 w-full">
+            <h1 class="text-indigo-700 dark:text-white leading-6 text-base lg:text-xl ">
               {{ name }}'s Price
             </h1>
             <h2
@@ -83,8 +83,8 @@
           <div class="coin-progress bg-gray-200 w-full lg:w-96 rounded-full h-2.5 dark:bg-gray-700" style="display: inline-block;">
             <div class="bar bg-blue-600 h-2.5 rounded-full " [style.width]="percentage+'%'"></div>
             <div class ="lg:w-96 sm:w-16" style="display: inline-block;">
-              <p class ="coin-low pl-2 mr-0 text-sm sm:text-xs font-bold dark:text-white" style="display: inline-block;">Low : ${{low |  number : '1.2-2'}}</p>
-              <p class = "coin-high lg:pr-2 ml-25 lg:pl-20 sm:ml-15 sm:pl-5 text-sm font-bold dark:text-white" style="display: inline-block; ">High : ${{high| number : '1.2-2'}} </p>
+              <p class ="coin-low pl-2 mr-0 text-xs lg:text-sm md:text-sm font-bold dark:text-white" style="display: inline-block;">Low : ${{low |  number : '1.2-2'}}</p>
+              <p class = "coin-high ml-15 pl-5 text-xs lg:pr-2 lg:ml-25 lg:pl-28 lg:ml-15 lg:text-sm font-bold dark:text-white" style="display: inline-block; ">High : ${{high| number : '1.2-2'}} </p>
             </div>
           </div>
        
