@@ -93,7 +93,7 @@ export class CoinDetailsComponent {
        },
   
       title: {
-        text: 'Last 24 Hr Price'
+        text: ''
       },
   
       subtitle: {
@@ -103,7 +103,9 @@ export class CoinDetailsComponent {
       rangeSelector: {
         selected: 1
       },
+
       series: [{
+        name: this.name+"'s price",
         data: this.sparkline,
         type: 'area',
         threshold: null,
