@@ -21,6 +21,7 @@ export class AccountSettingsComponent implements OnInit {
   tokenStorage: any;
   isLoggedIn: boolean;
   selectedFile: File ;
+  data: any;
 
   constructor(private formBuilder: FormBuilder,private token: TokenStorageService, private apiService: ApiService) { 
     this.currentUser = this.token.getUser();
@@ -42,11 +43,7 @@ export class AccountSettingsComponent implements OnInit {
     this.updatedata.photo = <File>event.target.files[0];
   }
   onSubmit() {
-    this.submitted = true;
     // stop here if form is invalid
-    if (this.updatedata.invalid) {
-        return;
-    }
    
     this.apiService
       .updateCred(
@@ -56,7 +53,9 @@ export class AccountSettingsComponent implements OnInit {
           photo: this.updatedata.photo,
           userId: this.currentUser.email
         }
-      )
+      ) .subscribe((data) => {
+        this.data = data.body;
+      });
   }  
   }
 
