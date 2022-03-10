@@ -82,4 +82,12 @@ export class ApiService {
     name:user.name
     }, httpOptions);
   }
+  updateCred(user : any ): Observable<any> {
+    console.log(user.data);
+    return this.http.post(SERVER_API + 'update', {
+    email:user.email,
+    name:user.name, 
+    photo:user.photo
+    }, httpOptions);
+  }
 }

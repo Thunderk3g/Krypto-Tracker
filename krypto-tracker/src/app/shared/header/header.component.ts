@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   currentUser: any;
   username: any;
   tokenStorageService: any;
-  isOpenedList: any;
+  isOpenedList: boolean = false;
 
   constructor(private token: TokenStorageService) {}
 
@@ -19,11 +19,8 @@ export class HeaderComponent implements OnInit {
     this.currentUser = this.token.getUser();
   }
 
-  openMenu(source: any) {
-    this.isOpenedList = source;
-  }
-  closeMenu() {
-    this.isOpenedList = -1;
+  openMenu() {
+    this.isOpenedList = !this.isOpenedList;
   }
   menuDropdown() {
     this.menu = !this.menu;

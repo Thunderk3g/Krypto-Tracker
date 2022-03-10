@@ -19,6 +19,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
 import { NftComponent } from './nft/nft.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { Error404Component } from './shared/error404/error404.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { Error404Component } from './shared/error404/error404.component';
     WatchlistComponent,
     BuyKryptoComponent,
     NftComponent,
+    AccountSettingsComponent,
     Error404Component
     ],
   imports: [

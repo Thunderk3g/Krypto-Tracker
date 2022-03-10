@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { BuyKryptoComponent } from './buy-krypto/buy-krypto.component';
 import { CoinDetailsComponent } from './coin-details/coin-details.component';
 import { HomeComponent } from './home/home.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'watchlist', component: WatchlistComponent },
   { path: 'nft', component: NftComponent },
   { path: 'buy-krypto', component: BuyKryptoComponent },
+  { path: 'account-settings', component: AccountSettingsComponent },
   { path: '404', component: Error404Component },
   { path: '**', redirectTo: '404' }
 ];
