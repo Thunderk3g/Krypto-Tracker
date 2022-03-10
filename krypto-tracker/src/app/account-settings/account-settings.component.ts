@@ -3,6 +3,7 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';import { TokenStorageService } from '../services/token-storage.service';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-account-settings',
@@ -12,47 +13,50 @@ import {
 export class AccountSettingsComponent implements OnInit {
   tokenStorageService: any;
   currentUser: any;
-  updatedata: any;
+  updatedata: any ={};
   submitted: boolean;
   apiservice: any;
   errorCreated: boolean;
   errorMessage: any;
   tokenStorage: any;
   isLoggedIn: boolean;
-  
-  constructor(private formBuilder: FormBuilder,private token: TokenStorageService) { }
+  selectedFile: File ;
 
-  ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
-    }
+  constructor(private formBuilder: FormBuilder,private token: TokenStorageService, private apiService: ApiService) { 
     this.currentUser = this.token.getUser();
+
+  }
+
+  ngOnInit(){
    this.updatedata = this.formBuilder.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      address: ['', [Validators.required]],
       photo: ['',[Validators.required]]
   });
+  if (this.token.getToken()) {
+    this.isLoggedIn = true;
   }
-  onFileChanged(event:any) {
-    const file = event.target.files[0]
   }
-  onSubmit(): void {
 
+  onFileChanged(event:any) {
+    this.updatedata.photo = <File>event.target.files[0];
+  }
+  onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.updatedata.invalid) {
         return;
     }
-  
-  
-    this.apiservice.updateCred(this.updatedata).subscribe(
-      (data: any) => {      
-        window.location.reload();
-      },
-      (err: { error: { message: any; }; }) => {
-        this.errorCreated = true;
-        this.errorMessage = err.error.message;
-      });
-     
+   
+    this.apiService
+      .updateCred(
+        {
+          name: this.updatedata.name,
+          address: this.updatedata.address,
+          photo: this.updatedata.photo,
+          userId: this.currentUser.email
+        }
+      )
+  }  
   }
-}
+
