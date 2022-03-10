@@ -10,6 +10,9 @@
     padding-top: 2px;
     padding-bottom: 20px;
   }
+.profile-img{
+    margin-left: 20px;
+  }
 
   @media only screen 
   and (min-device-width: 320px) 
@@ -22,6 +25,12 @@
     .user-dropdown{
       align-items: center;
       margin-left: 40px;
+    }
+    .mob-view{
+      margin-left: 60px;
+    }
+    .mob-profile-img{
+      margin-left: 20px;
     }
 }
 @media only screen 
@@ -36,6 +45,12 @@ and (-webkit-min-device-pixel-ratio: 2) {
     align-items: center;
     margin-left: 60px;
   }
+  .mob-view{
+    margin-left: 80px;
+  }
+  .mob-profile-img{
+    margin-left: 20px;
+  }
 }
 @media only screen 
 and (min-device-width: 420px) 
@@ -48,5 +63,11 @@ and (-webkit-min-device-pixel-ratio: 2) {
   .user-dropdown{
     align-items: center;
     margin-left: 85px;
+  }
+  .mob-view{
+    margin-left: 100px;
+  }
+  .mob-profile-img{
+    margin-left: 20px;
   }
 }
