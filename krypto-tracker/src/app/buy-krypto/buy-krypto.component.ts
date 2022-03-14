@@ -9,7 +9,14 @@ export class BuyKryptoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getLocation();
   }
-
+  getLocation(){
+    navigator.geolocation.getCurrentPosition(position => {
+      const { latitude, longitude } = position.coords;
+      console.log(latitude);
+      console.log(longitude);
+    });
+  }
 }

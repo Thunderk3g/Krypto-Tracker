@@ -83,11 +83,12 @@ export class ApiService {
     }, httpOptions);
   }
   updateCred(user : any ): Observable<any> {
-    return this.http.post(SERVER_API + 'updateCred', {
+    console.log(user.photo);
+    return this.http.post(SERVER_API + 'upload', {
       userId: user.userId,
       name:user.name,
       photo:user.photo,
-      address:user.photo
+      address:user.address
       }, httpOptions);
   }
 }
