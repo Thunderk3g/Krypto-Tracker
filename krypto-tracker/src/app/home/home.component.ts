@@ -161,7 +161,6 @@ export class HomeComponent implements OnInit {
     this.pageOfItems = pageOfItems;
   }
   addtoWatchlist(value: any) {
-
     this.apiService
       .addtofav({
         iconUrl: this.li[value].iconUrl,
@@ -174,9 +173,8 @@ export class HomeComponent implements OnInit {
       .subscribe((data) => {
         this.data = data.body;
       });
-      this.showModal = false;
+      this.showModal = true;
   }
-
   toggleModal() {
     this.showModal = !this.showModal;
   }
