@@ -5,7 +5,6 @@ import { BuyKryptoComponent } from './buy-krypto/buy-krypto.component';
 import { CoinDetailsComponent } from './coin-details/coin-details.component';
 import { LearnComponent } from './learn/learn.component';
 import { LoginComponent } from './login/login.component';
-import { NftComponent } from './nft/nft.component';
 import { Error404Component } from './shared/error404/error404.component';
 import { SignupComponent } from './signup/signup.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
@@ -20,7 +19,10 @@ const routes: Routes = [
   { path: 'coin/:id', component: CoinDetailsComponent },
   { path: 'learn', component: LearnComponent },
   { path: 'watchlist', component: WatchlistComponent },
-  { path: 'nft', component: NftComponent },
+  {
+    path: 'nft',
+    loadChildren: () => import('./nft/nft.module').then((m) => m.NftModule),
+  },
   { path: 'buy-krypto', component: BuyKryptoComponent },
   { path: 'account-settings', component: AccountSettingsComponent },
   { path: '404', component: Error404Component },
