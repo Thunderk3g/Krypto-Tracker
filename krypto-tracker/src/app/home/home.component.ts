@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { millify } from 'millify';
-import { DataService } from '../services/data.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import * as Highcharts from 'highcharts';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private http: HttpClient,
-    private data: DataService,
     private token: TokenStorageService
   ) {
     
@@ -152,28 +151,36 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-  getDetails(value: any) {
-    const uuid = this.li[value].uuid;
-    const obj = { uuid };
-    this.data.onPushTable(obj);
-  }
+ 
   onChangePage(pageOfItems: Array<any>) {
     this.pageOfItems = pageOfItems;
   }
   addtoWatchlist(value: any) {
-    this.apiService
-      .addtofav({
-        iconUrl: this.li[value].iconUrl,
-        name: this.li[value].name,
-        change: this.li[value].change,
-        price: this.li[value].price,
-        marketcap: this.li[value].marketCap,
-        userId: this.currentUser.email,
-      })
-      .subscribe((data) => {
-        this.data = data.body;
-      });
-      this.showModal = true;
+    Swal.fire({
+      title: 'Do you want to add to watchlist?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Save',
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.apiService
+        .addtofav({
+          iconUrl: this.li[value].iconUrl,
+          name: this.li[value].name,
+          change: this.li[value].change,
+          price: this.li[value].price,
+          marketcap: this.li[value].marketCap,
+          userId: this.currentUser.email,
+        }).subscribe((res) => {
+          Swal.fire('Saved!', '', 'success')
+        });;
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
+   
   }
   toggleModal() {
     this.showModal = !this.showModal;

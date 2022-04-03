@@ -1,5 +1,4 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
-import { DataService } from '../services/data.service';
 import millify from 'millify';
 import { ApiService } from '../services/api.service';
 import * as Highcharts from 'highcharts';
@@ -35,7 +34,7 @@ export class CoinDetailsComponent {
   low: any;
   high: number;
   isReadMore:boolean=true;
-  constructor(private router:Router,private data: DataService, private apiService: ApiService, private route: ActivatedRoute,) {
+  constructor(private router:Router, private apiService: ApiService, private route: ActivatedRoute,) {
   
  
   }

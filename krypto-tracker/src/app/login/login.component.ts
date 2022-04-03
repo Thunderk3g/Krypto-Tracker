@@ -1,12 +1,15 @@
 import { ApiService } from '../services/api.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import {
   FormGroup,
   FormControl,
   Validators,
   FormBuilder,
 } from '@angular/forms';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +25,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
 
   constructor(private formBuilder: FormBuilder, private apiservice: ApiService,
-    private tokenStorage: TokenStorageService ) { }
+    private tokenStorage: TokenStorageService ,public router: Router) { }
 
   ngOnInit() {
       this.formdata = this.formBuilder.group({
@@ -50,7 +53,16 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
         this.isLoggedIn = true;
-        window.location.reload();
+      Swal.fire({  
+      toast: true,
+      title: 'Signed in Successfully',
+        
+      icon: 'success',  
+      showConfirmButton: false,  
+      timer: 5000,
+      position:'top-right',
+      timerProgressBar: true
+    }).then(()=>  this.router.navigate(['/']))
       },
       (err) => {
         this.errorCreated = true;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { ApiService } from '../services/api.service';
 import { TokenStorageService } from '../services/token-storage.service';
 
@@ -37,22 +38,32 @@ export class NftComponent implements OnInit {
   toggleModal(){
     this.showModal = !this.showModal;
   }
-  toggleDelte(){
-    this.showDelete = !this.showDelete;
-  }
+
   onSubmit(){
-    this.apiService.addNFT(this.formdata, this.userId ).subscribe(
-      (data) => {
-        this.data = data.body;
-        alert( 'Hello ' + '\n NFT has been added to your collection');   
-        this.showModal = false; 
-        window.location.reload();
-      },
-      (err) => {
-        this.errorCreated = true;
-        this.errorMessage = err.error.message;
+    Swal.fire({
+      title: 'Do you want to mint a new NFT?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Mint',
+      denyButtonText: `Don't Mint`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.apiService.addNFT(this.formdata, this.userId ).subscribe(
+          (data) => {
+            this.data = data.body;
+            this.showModal = false; 
+          },
+          (err) => {
+            this.errorCreated = true;
+            this.errorMessage = err.error.message;
+          }
+        )
+        Swal.fire('Added to your collection!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('The NFT has not been minted', '', 'info')
       }
-    )
+    })
   }
   getnft(){
     this.apiService.getNFT({
@@ -63,13 +74,25 @@ export class NftComponent implements OnInit {
     });
   }
   delFav(index:any){
-    this.apiService.delNFT({
-      userId: this.currentUser.email,
-      name:this.li[index].name
-    }).subscribe((data) => {
-      this.li = data;
-      console.log(data);
-    });
-    window.location.reload();
+    Swal.fire({
+      title: 'Do you want to add to delete this NFT?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      denyButtonText: `Don't Delete`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.apiService.delNFT({
+          userId: this.currentUser.email,
+          name:this.li[index].name
+        }).subscribe((data) => {
+        
+        });
+        Swal.fire('Deleted!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('The NFT has not been deleted', '', 'info')
+      }
+    })
   }
 }

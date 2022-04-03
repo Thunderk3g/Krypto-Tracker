@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { BuyKryptoComponent } from './buy-krypto/buy-krypto.component';
 import { CoinDetailsComponent } from './coin-details/coin-details.component';
-import { HomeComponent } from './home/home.component';
 import { LearnComponent } from './learn/learn.component';
 import { LoginComponent } from './login/login.component';
 import { NftComponent } from './nft/nft.component';
@@ -12,7 +11,10 @@ import { SignupComponent } from './signup/signup.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 
 const routes: Routes = [
-  { path: '',  component: HomeComponent },
+  {
+    path: '',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'coin/:id', component: CoinDetailsComponent },

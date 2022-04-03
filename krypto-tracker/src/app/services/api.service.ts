@@ -76,7 +76,8 @@ export class ApiService {
     userId: user.userId,
     }, httpOptions);
   }
-  delNFT(user : any ): Observable<any> {
+  delNFT(user : any ) {
+    console.log(user.userId);
     return this.http.post(SERVER_API + 'delnft', {
     userId: user.userId,
     name:user.name
