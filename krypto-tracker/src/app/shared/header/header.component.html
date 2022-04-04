@@ -110,7 +110,7 @@
                 <div class="h-full flex">
                     <!-- Code block starts -->
                     <div class="relative">
-                        <div class="bg-white dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded w-40 cursor-pointer" data-menu>
+                        <div class="bg-white dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded cursor-pointer" data-menu>
                             <p class="profile-img px-3 py-3 text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal font-normal">    <img
                               class="inline object-cover pl-2 w-8 h-8 mr-2 rounded-full" (click)="openMenu()"
                               src="https://avatars.dicebear.com/api/bottts/{{
@@ -120,7 +120,7 @@
                             />
                           </p>
                         </div>
-                        <ul [ngClass]="isOpenedList === true ? 'visible transition duration-300 opacity-100 bg-white dark:bg-gray-800 shadow rounded mt-2 py-1 w-48 absolute':'hidden'">
+                        <ul class="account-dropdown" [ngClass]="isOpenedList === true ? 'visible transition duration-300 opacity-100 bg-white dark:bg-gray-800 shadow rounded mt-2 py-1 w-40 absolute':'hidden'">
                             <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center" routerLink="/account-settings" >
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" />
@@ -306,7 +306,7 @@
           <div class="mob-view h-full flex">
             <!-- Code block starts -->
             <div class="relative">
-                <div class="bg-white dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded w-40 cursor-pointer"  (click)="openMenu()" data-menu>
+                <div class="bg-white dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded  cursor-pointer"  (click)="openMenu()" data-menu>
                     <p class="mob-profile-img px-3 py-3 text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal font-normal">    <img
                       class="inline object-cover pl-2 w-12 h-12 mr-2 rounded-full"
                       src="https://avatars.dicebear.com/api/bottts/{{

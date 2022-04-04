@@ -10,8 +10,9 @@
     padding-top: 2px;
     padding-bottom: 20px;
   }
-.profile-img{
-    margin-left: 20px;
+
+  .account-dropdown{
+    margin-left: -95px;
   }
 
   @media only screen 
@@ -27,10 +28,7 @@
       margin-left: 40px;
     }
     .mob-view{
-      margin-left: 60px;
-    }
-    .mob-profile-img{
-      margin-left: 20px;
+      margin-left: 70px;
     }
 }
 @media only screen 
@@ -46,11 +44,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-left: 60px;
   }
   .mob-view{
-    margin-left: 80px;
+    margin-left: 100px;
   }
-  .mob-profile-img{
-    margin-left: 20px;
-  }
+ 
 }
 @media only screen 
 and (min-device-width: 420px) 
@@ -65,9 +61,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-left: 85px;
   }
   .mob-view{
-    margin-left: 100px;
+    margin-left: 120px;
   }
-  .mob-profile-img{
-    margin-left: 20px;
-  }
+
 }
