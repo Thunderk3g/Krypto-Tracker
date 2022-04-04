@@ -8,6 +8,7 @@ import {
   FormBuilder,
 } from '@angular/forms';
 import { PassMatch } from '../../_helpers/pass-match.validator';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -20,6 +21,7 @@ export class SignupComponent implements OnInit {
     submitted = false;
     errorMessage = '';
     data: any;
+  router: any;
     constructor(private formBuilder: FormBuilder ,private apiservice: ApiService) { }
 
     ngOnInit() {
@@ -46,7 +48,17 @@ export class SignupComponent implements OnInit {
           (data) => {
             this.accountCreated = true;
             this.data = data.body;
-          },
+            Swal.fire({  
+              toast: true,
+              title: 'Your Account has been successfully created',
+                
+              icon: 'success',  
+              showConfirmButton: false,  
+              timer: 3000,
+              position:'top-right',
+              timerProgressBar: true
+            }).then(()=>  this.router.navigate(['/login']))
+              },    
           (err) => {
             this.errorCreated = true;
             this.errorMessage = err.error.message;
