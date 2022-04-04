@@ -18,7 +18,11 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'coin/:id', component: CoinDetailsComponent },
   { path: 'learn', component: LearnComponent },
-  { path: 'watchlist', component: WatchlistComponent },
+  {
+    path: 'watchlist',
+    loadChildren: () => import('./watchlist/watchlist.module').then((m) => m.WatchlistModule),
+  }
+  ,
   {
     path: 'nft',
     loadChildren: () => import('./nft/nft.module').then((m) => m.NftModule),
