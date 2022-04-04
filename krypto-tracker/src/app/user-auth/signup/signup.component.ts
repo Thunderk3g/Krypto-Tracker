@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { TokenStorageService } from '../services/token-storage.service';
+import { ApiService } from '../../services/api.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 import {
   FormGroup,
   FormControl,
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { PassMatch } from '../_helpers/pass-match.validator';
+import { PassMatch } from '../../_helpers/pass-match.validator';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',

@@ -1,5 +1,5 @@
-import { ApiService } from '../services/api.service';
-import { TokenStorageService } from '../services/token-storage.service';
+import { ApiService } from '../../services/api.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
         
       icon: 'success',  
       showConfirmButton: false,  
-      timer: 5000,
+      timer: 3000,
       position:'top-right',
       timerProgressBar: true
     }).then(()=>  this.router.navigate(['/']))

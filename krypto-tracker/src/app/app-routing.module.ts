@@ -4,20 +4,30 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { BuyKryptoComponent } from './buy-krypto/buy-krypto.component';
 import { CoinDetailsComponent } from './coin-details/coin-details.component';
 import { LearnComponent } from './learn/learn.component';
-import { LoginComponent } from './login/login.component';
 import { Error404Component } from './shared/error404/error404.component';
-import { SignupComponent } from './signup/signup.component';
-import { WatchlistComponent } from './watchlist/watchlist.component';
+
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'coin/:id', component: CoinDetailsComponent },
-  { path: 'learn', component: LearnComponent },
+  {
+    path: 'login',
+    loadChildren: () => import('./user-auth/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('./user-auth/signup/signup.module').then((m) => m.SignupModule),
+  },
+  {
+    path: 'coin/:id',
+    loadChildren: () => import('./coin-details/coin-details.module').then((m) => m.CoinDetailsModule),
+  },
+  {
+    path: 'learn',
+    loadChildren: () => import('./learn/learn.module').then((m) => m.LearnModule),
+  },
   {
     path: 'watchlist',
     loadChildren: () => import('./watchlist/watchlist.module').then((m) => m.WatchlistModule),
@@ -27,9 +37,18 @@ const routes: Routes = [
     path: 'nft',
     loadChildren: () => import('./nft/nft.module').then((m) => m.NftModule),
   },
-  { path: 'buy-krypto', component: BuyKryptoComponent },
-  { path: 'account-settings', component: AccountSettingsComponent },
-  { path: '404', component: Error404Component },
+  {
+    path: 'buy-krypto',
+    loadChildren: () => import('./buy-krypto/buy-krypto.module').then((m) => m.BuyKryptoModule),
+  },
+  {
+    path: 'account-settings',
+    loadChildren: () => import('./account-settings/account-settings.module').then((m) => m.AccountSettingsModule),
+  },
+  {
+    path: '404',
+    loadChildren: () => import('./shared/error404/error404.module').then((m) => m.Error404Module),
+  },
   { path: '**', redirectTo: '404' }
 ];
 
