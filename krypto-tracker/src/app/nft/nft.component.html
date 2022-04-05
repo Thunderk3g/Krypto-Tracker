@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="main-container content-center bg-gray-50 dark:bg-dark-grey ">
 <div *ngIf="currentUser; else loggedOut">
-<div class="bg-gray-100 max-w-5xl mx-auto grid-cols-1 ">
+<div *ngIf="!isEmpty" class="bg-gray-100 max-w-5xl mx-auto grid-cols-1 ">
   <button
     class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
     type="button"
@@ -9,107 +9,7 @@
   >
     Create NFT
   </button>
-  <div
-    *ngIf="showModal"
-    class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
-  >
-    <div class="relative w-auto my-6 mx-auto max-w-6xl">
-      <!--content-->
-      <div
-        class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
-      >
-        <!--header-->
-        <div
-          class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t"
-        >
-          <h3 class="text-3xl font-semibold">NFT Details</h3>
-          <button
-            class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-            (click)="toggleModal()"
-          >
-            <span
-              class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"
-            >
-              ×
-            </span>
-          </button>
-        </div>
-        <!--body-->
-        <div class="relative p-6 flex-auto">
-          <form [formGroup]="formdata" (ngSubmit)="onSubmit()">
-            <div class="mb-6">
-              <label
-                for="text"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >NFT Name</label
-              >
-              <input
-                type="text"
-                id="text"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Something Cool"
-                formControlName="name"
-                [(ngModel)]="formdata.name"
-                required
-              />
-            </div>
-            <div class="mb-6">
-              <label
-                for="price"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >Price</label
-              >
-              <input
-                type="number"
-                id="number"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                formControlName="price" 
-                [(ngModel)]="formdata.price"
-                required
-              />
-            </div>
-              <div class="mb-6">
-                <label
-                  for="email"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >Icon URL</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="ICON URL"
-                  formControlName="icon" 
-                  [(ngModel)]="formdata.icon"
-                  required
-                />
-              </div>
-            
-          </form>
-        </div>
-        <!--footer-->
-        <div
-          class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b"
-        >
-          <button
-            class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-            type="button"
-            (click)="toggleModal()"
-          >
-            Close
-          </button>
-          <button
-            class="bg-emerald-500 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-            type="button"
-            (click)=" onSubmit()"
-          >
-            Publish NFT
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+ 
   <!-- Remove py-8 -->
   <div class="mx-auto container py-8">
     <div class="flex flex-wrap items-center lg:justify-between justify-center">
@@ -189,6 +89,130 @@
     </div>
   </div>
 </div>
+<div *ngIf="isEmpty">
+  <div class="flex justify-center py-12 sm:px-6 px-4">
+    <div
+      class="max-w-2xl rounded shadow bg-white dark:bg-grey-blue text-center py-6 pl-6 pr-12"
+    >
+      <div class="md:inline-block items-center md:pb-10 lg:pb-10 ">
+      </div>
+      <div class="md:inline-block text-center pt-10">
+        <p
+          class="text-lg font-semibold text-center leading-4 text-gray-800 dark:text-gray-100 pb-5"
+        >
+         You don't have an NFT ! Mint one already 🤨
+        </p>
+        <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"  (click)="toggleModal()">
+          <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                  Mint
+          </span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div
+*ngIf="showModal"
+class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
+>
+<div class="relative w-auto my-6 mx-auto max-w-6xl">
+  <!--content-->
+  <div
+    class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+  >
+    <!--header-->
+    <div
+      class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t"
+    >
+      <h3 class="text-3xl font-semibold">NFT Details</h3>
+      <button
+        class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+        (click)="toggleModal()"
+      >
+        <span
+          class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"
+        >
+          ×
+        </span>
+      </button>
+    </div>
+    <!--body-->
+    <div class="relative p-6 flex-auto">
+      <form [formGroup]="formdata" (ngSubmit)="onSubmit()">
+        <div class="mb-6">
+          <label
+            for="text"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >NFT Name</label
+          >
+          <input
+            type="text"
+            id="text"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Something Cool"
+            formControlName="name"
+            [(ngModel)]="formdata.name"
+            required
+          />
+        </div>
+        <div class="mb-6">
+          <label
+            for="price"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >Price</label
+          >
+          <input
+            type="number"
+            id="number"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            formControlName="price" 
+            [(ngModel)]="formdata.price"
+            required
+          />
+        </div>
+          <div class="mb-6">
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Icon URL</label
+            >
+            <input
+              type="email"
+              id="email"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="ICON URL"
+              formControlName="icon" 
+              [(ngModel)]="formdata.icon"
+              required
+            />
+          </div>
+        
+      </form>
+    </div>
+    <!--footer-->
+    <div
+      class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b"
+    >
+      <button
+        class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        type="button"
+        (click)="toggleModal()"
+      >
+        Close
+      </button>
+      <button
+        class="bg-emerald-500 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        type="button"
+        (click)=" onSubmit()"
+      >
+        Publish NFT
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+<div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
 </div>
 <div class ="flex items-center justify-centerbg-gray-50 dark:bg-dark-grey">
 <ng-template #loggedOut>

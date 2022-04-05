@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="main-container content-center bg-gray-50 dark:bg-dark-grey ">
   <div *ngIf="currentUser; else loggedOut">
-    <div class="flex items-center justify-center h-full bg-gray-50 dark:bg-dark-grey">
+    <div  *ngIf="!isEmpty" class="flex items-center justify-center h-full bg-gray-50 dark:bg-dark-grey">
       <div class="w-full flex items-center justify-center bg-gray-50 dark:bg-dark-grey">
           <div class="py-4 sm:py-6 md:py-8 bg-transparent rounded-lg h-full" >
             <div class="w-full md:grid-cols-2 mt-2 mb-20  h-full  rounded-lg lg:grid-cols-3 px-4 py-12 xl:px-10 gap-y-8 gap-x-12 2xl:gap-x-28 mt-2 bg-white" *ngFor="let item of li ; index as i ">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="relative top-0 right-0 ">
                   <input type="text" class="form-control"  placeholder="index" 
-                  aria-describedby="basic-addon1" value='{{i}}' #index  readonly style="display: none;">
+                  aria-describedby="basic-addon1" value='{{li[i].name}}' #index  readonly style="display: none;">
                   <button  class="bg-red-500 hover:bg-red-400 border-b-4 border-red-700 hover:border-red-500 text-white text-center py-2 px-4 rounded" [value]='index.value' (click)="delFav(index.value)"  >
                     Delete
                   </button>
@@ -95,6 +95,30 @@
             </div>
         </div>
     </div>
+    </div>
+    <div *ngIf="isEmpty">
+      <div class="flex justify-center py-12 sm:px-6 px-4">
+        <div
+          class="max-w-2xl rounded shadow bg-white dark:bg-grey-blue text-center py-6 pl-6 pr-12"
+        >
+          <div class="md:inline-block items-center md:pb-10 lg:pb-10 ">
+           <img class ="watchlist-img" src ="../../assets/img/Watchlist.png">
+          </div>
+          <div class="md:inline-block text-center pt-10">
+            <p
+              class="text-lg font-semibold text-center leading-4 text-gray-800 dark:text-gray-100 pb-5"
+            >
+              Your Watchlist is empty . Add something !
+            </p>
+            <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"   routerLink="/">
+              <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                      Home
+              </span>
+            </button>
+          </div>
+        </div>
+    
+      </div>
     </div>
   </div>
   <div class ="flex items-center justify-centerbg-gray-50 dark:bg-dark-grey">

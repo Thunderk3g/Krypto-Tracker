@@ -1,4 +1,5 @@
 <app-header></app-header>
+
 <div class="w-full bg-gray-50 dark:bg-dark-grey py-10">
   <div class="container mx-auto px-6 flex items-start justify-center">
     <div class="w-full">
@@ -10,7 +11,7 @@
         <div
           class="grid grid-cols-2 lg:flex-row items-start lg:items-center mb-8"
         >
-          <div class="w-full">
+          <div class="coin-logo-section w-full">
             <img
               class="coin-logo overflow-hidden object-cover rounded object-center"
               src="{{ iconUrl }}"
@@ -157,10 +158,10 @@
       <!-- Card code block end -->
 
       <div
-        class="mx-auto w-full bg-white p-5 lg:p-10 text-black dark:text-white dark:bg-grey-blue shadow rounded"
+        class="coin-desc mx-auto w-full bg-white p-5 lg:p-10 text-black dark:text-white dark:bg-grey-blue shadow rounded"
       >
-        <div class="flex gap-4 justify-center" style="display: inline-block">
-          <div [ngClass]="{ limitTextHeight: isReadMore }">
+        <div class="coin-desc flex gap-4 justify-center" style="display: inline-block">
+          <div class="coin-desc" [ngClass]="{ limitTextHeight: isReadMore }">
             {{ description }}
           </div>
           <button

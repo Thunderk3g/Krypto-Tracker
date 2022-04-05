@@ -18,6 +18,8 @@ export class NftComponent implements OnInit {
   userId: any;
   li: any;
   currentToken: string;
+  isEmpty:boolean =false;
+
   constructor(private formBuilder: FormBuilder,private apiService: ApiService, private token: TokenStorageService ) { }
 
   ngOnInit(): void {
@@ -59,7 +61,9 @@ export class NftComponent implements OnInit {
             this.errorMessage = err.error.message;
           }
         )
-        Swal.fire('Added to your collection!', '', 'success')
+        Swal.fire('Added to your collection!', '', 'success').then((result) => {
+          window.location.reload();
+        });
       } else if (result.isDenied) {
         Swal.fire('The NFT has not been minted', '', 'info')
       }
@@ -70,7 +74,9 @@ export class NftComponent implements OnInit {
       userId: this.currentUser.email
     }).subscribe((data) => {
       this.li = data;
-      console.log(data);
+      if(typeof this.li !== 'undefined' && this.li.length === 0){
+        this.isEmpty = true;
+      }
     });
   }
   delFav(index:any){
@@ -89,7 +95,9 @@ export class NftComponent implements OnInit {
         }).subscribe((data) => {
         
         });
-        Swal.fire('Deleted!', '', 'success')
+        Swal.fire('Deleted!', '', 'success').then((result) => {
+          window.location.reload();
+        });
       } else if (result.isDenied) {
         Swal.fire('The NFT has not been deleted', '', 'info')
       }

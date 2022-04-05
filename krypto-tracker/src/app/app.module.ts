@@ -20,6 +20,7 @@ import { NftComponent } from './nft/nft.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { Error404Component } from './shared/error404/error404.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
     FormsModule,
     HttpClientModule,
     HighchartsChartModule,
+    NgxSkeletonLoaderModule,
     ReactiveFormsModule,
     NgHttpLoaderModule.forRoot()
   ],
