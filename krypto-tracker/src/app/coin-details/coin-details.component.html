@@ -160,7 +160,10 @@
       <div
         class="coin-desc mx-auto w-full bg-white p-5 lg:p-10 text-black dark:text-white dark:bg-grey-blue shadow rounded"
       >
-        <div class="coin-desc flex gap-4 justify-center" style="display: inline-block">
+        <div
+          class="coin-desc flex gap-4 justify-center"
+          style="display: inline-block"
+        >
           <div class="coin-desc" [ngClass]="{ limitTextHeight: isReadMore }">
             {{ description }}
           </div>
@@ -188,10 +191,9 @@
         </div>
       </div>
       <div
-      id="chart"
+        id="chart"
         class="mx-auto w-full bg-white p-5 lg:p-10 text-black dark:text-white dark:bg-grey-blue shadow rounded"
-      >
-      </div>
+      ></div>
     </div>
   </div>
 

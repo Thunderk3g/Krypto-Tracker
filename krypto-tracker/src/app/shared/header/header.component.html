@@ -42,7 +42,7 @@
             <a
               href="#"
               class="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-               routerLink="/"
+              routerLink="/portfolio"
               >Portfolio</a
             >
           </li>
@@ -107,52 +107,106 @@
 
         <!-- Dark mode switcher end -->
         <div class="flex" *ngIf="currentUser; else loggedOut">
-                <div class="h-full flex">
-                    <!-- Code block starts -->
-                    <div class="relative">
-                        <div class="bg-white dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded cursor-pointer" data-menu>
-                            <p class="profile-img px-3 py-3 text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal font-normal">    <img
-                              class="inline object-cover pl-2 w-8 h-8 mr-2 rounded-full" (click)="openMenu()"
-                              src="https://avatars.dicebear.com/api/bottts/{{
-                                currentUser.email
-                              }}.svg"
-                              alt="Profile image"
-                            />
-                          </p>
-                        </div>
-                        <ul class="account-dropdown" [ngClass]="isOpenedList === true ? 'visible transition duration-300 opacity-100 bg-white dark:bg-gray-800 shadow rounded mt-2 py-1 w-40 absolute':'hidden'">
-                            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center" routerLink="/account-settings" >
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" />
-                                    <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
-                                    <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
-                                    <line x1="3" y1="6" x2="3" y2="19" />
-                                    <line x1="12" y1="6" x2="12" y2="19" />
-                                    <line x1="21" y1="6" x2="21" y2="19" />
-                                </svg>
-                                <span class="ml-2 font-normal"  >Account Settings</span>
-                            </li>
-                            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-mobile" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" />
-                                    <rect x="7" y="4" width="10" height="16" rx="1" />
-                                    <line x1="11" y1="5" x2="13" y2="5" />
-                                    <line x1="12" y1="17" x2="12" y2="17.01" />
-                                </svg>
-                                <span class="ml-2">Notifications</span>
-                            </li>
-                            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" />
-                                    <line x1="18" y1="6" x2="6" y2="18" />
-                                    <line x1="6" y1="6" x2="18" y2="18" />
-                                </svg>
-                                <span class="ml-2"   (click)="logout()">Sign Out</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Code block ends -->
-                </div>
+          <div class="h-full flex">
+            <!-- Code block starts -->
+            <div class="relative">
+              <div
+                class="bg-white dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded cursor-pointer"
+                data-menu
+              >
+                <p
+                  class="profile-img px-3 py-3 text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal font-normal"
+                >
+                  <img
+                    class="inline object-cover pl-2 w-8 h-8 mr-2 rounded-full"
+                    (click)="openMenu()"
+                    src="https://avatars.dicebear.com/api/bottts/{{
+                      currentUser.email
+                    }}.svg"
+                    alt="Profile image"
+                  />
+                </p>
+              </div>
+              <ul
+                class="account-dropdown"
+                [ngClass]="
+                  isOpenedList === true
+                    ? 'visible transition duration-300 opacity-100 bg-white dark:bg-gray-800 shadow rounded mt-2 py-1 w-40 absolute'
+                    : 'hidden'
+                "
+              >
+                <li
+                  class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center"
+                  routerLink="/account-settings"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-book"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                    <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                    <line x1="3" y1="6" x2="3" y2="19" />
+                    <line x1="12" y1="6" x2="12" y2="19" />
+                    <line x1="21" y1="6" x2="21" y2="19" />
+                  </svg>
+                  <span class="ml-2 font-normal">Account Settings</span>
+                </li>
+                <li
+                  class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-device-mobile"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <rect x="7" y="4" width="10" height="16" rx="1" />
+                    <line x1="11" y1="5" x2="13" y2="5" />
+                    <line x1="12" y1="17" x2="12" y2="17.01" />
+                  </svg>
+                  <span class="ml-2">Notifications</span>
+                </li>
+                <li
+                  class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-x"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                  <span class="ml-2" (click)="logout()">Sign Out</span>
+                </li>
+              </ul>
+            </div>
+            <!-- Code block ends -->
+          </div>
         </div>
         <ng-template #loggedOut>
           <button
@@ -274,6 +328,7 @@
             <a
               href="#"
               class="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              routerLink="/portfolio"
               >Portfolio</a
             >
           </li>
@@ -306,57 +361,101 @@
           <div class="mob-view h-full flex">
             <!-- Code block starts -->
             <div class="relative">
-                <div class="bg-white dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded  cursor-pointer"  (click)="openMenu()" data-menu>
-                    <p class="mob-profile-img px-3 py-3 text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal font-normal">    <img
-                      class="inline object-cover pl-2 w-12 h-12 mr-2 rounded-full"
-                      src="https://avatars.dicebear.com/api/bottts/{{
-                        currentUser.email
-                      }}.svg"
-                      alt="Profile image"
+              <div
+                class="bg-white dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded cursor-pointer"
+                (click)="openMenu()"
+                data-menu
+              >
+                <p
+                  class="mob-profile-img px-3 py-3 text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal font-normal"
+                >
+                  <img
+                    class="inline object-cover pl-2 w-12 h-12 mr-2 rounded-full"
+                    src="https://avatars.dicebear.com/api/bottts/{{
+                      currentUser.email
+                    }}.svg"
+                    alt="Profile image"
+                  />
+                </p>
+              </div>
+              <ul
+                [ngClass]="
+                  isOpenedList === true
+                    ? 'visible transition duration-300 opacity-100 bg-white dark:bg-gray-800 shadow rounded mt-2 py-1 w-48 absolute'
+                    : 'hidden'
+                "
+              >
+                <li
+                  class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-device-mobile"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <rect x="7" y="4" width="10" height="16" rx="1" />
+                    <line x1="11" y1="5" x2="13" y2="5" />
+                    <line x1="12" y1="17" x2="12" y2="17.01" />
+                  </svg>
+                  <span class="ml-2">Notifications</span>
+                </li>
+                <li
+                  class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal"
+                  routerLink="/account-settings"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-tag"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path
+                      d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4"
                     />
-                  </p>
-                </div>
-                <ul [ngClass]="isOpenedList === true ? 'visible transition duration-300 opacity-100 bg-white dark:bg-gray-800 shadow rounded mt-2 py-1 w-48 absolute':'hidden'">
-                    <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
-                            <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
-                            <line x1="3" y1="6" x2="3" y2="19" />
-                            <line x1="12" y1="6" x2="12" y2="19" />
-                            <line x1="21" y1="6" x2="21" y2="19" />
-                        </svg>
-                        <span class="ml-2 font-normal">Interface Settings</span>
-                    </li>
-                    <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-mobile" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <rect x="7" y="4" width="10" height="16" rx="1" />
-                            <line x1="11" y1="5" x2="13" y2="5" />
-                            <line x1="12" y1="17" x2="12" y2="17.01" />
-                        </svg>
-                        <span class="ml-2">Notifications</span>
-                    </li>
-                    <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
-                            <circle cx="9" cy="9" r="2" />
-                        </svg>
-                        <span class="ml-2">Account Data</span>
-                    </li>
-                    <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <line x1="18" y1="6" x2="6" y2="18" />
-                            <line x1="6" y1="6" x2="18" y2="18" />
-                        </svg>
-                        <span class="ml-2"   (click)="logout()">Sign Out</span>
-                    </li>
-                </ul>
+                    <circle cx="9" cy="9" r="2" />
+                  </svg>
+                  <span class="ml-2">Account Settings</span>
+                </li>
+                <li
+                  class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-x"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                  <span class="ml-2" (click)="logout()">Sign Out</span>
+                </li>
+              </ul>
             </div>
             <!-- Code block ends -->
-        </div>
+          </div>
         </div>
       </div>
       <div
@@ -378,4 +477,4 @@
       </div>
     </div>
   </nav>
-</div> 
+</div>

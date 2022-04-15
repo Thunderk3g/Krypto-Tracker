@@ -21,6 +21,7 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { Error404Component } from './shared/error404/error404.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,9 +36,10 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     WatchlistComponent,
     BuyKryptoComponent,
     NftComponent,
+    PortfolioComponent,
     AccountSettingsComponent,
-    Error404Component
-    ],
+    Error404Component,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -46,9 +48,9 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     HighchartsChartModule,
     NgxSkeletonLoaderModule,
     ReactiveFormsModule,
-    NgHttpLoaderModule.forRoot()
+    NgHttpLoaderModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
