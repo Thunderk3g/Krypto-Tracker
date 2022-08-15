@@ -21,7 +21,6 @@
   and (-webkit-min-device-pixel-ratio: 2) {
     .b001{
       width: 8rem;
-      margin-left: 50px;
     }
     .user-dropdown{
       align-items: center;
@@ -37,7 +36,6 @@ and (max-device-width: 375px)
 and (-webkit-min-device-pixel-ratio: 2) {
   .b001{
     width: 8rem;
-    margin-left: 85px;
   }
   .user-dropdown{
     align-items: center;
@@ -54,7 +52,6 @@ and (max-device-width: 725px)
 and (-webkit-min-device-pixel-ratio: 2) {
   .b001{
     width: 10rem;
-    margin-left: 90px;
   }
   .user-dropdown{
     align-items: center;
