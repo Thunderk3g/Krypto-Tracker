@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const SERVER_API = 'https://flowery-sugar-pest.glitch.me';
+const SERVER_API = 'https://flowery-sugar-pest.glitch.me/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
