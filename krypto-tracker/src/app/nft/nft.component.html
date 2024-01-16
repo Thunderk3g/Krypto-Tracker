@@ -5,72 +5,41 @@
       <div class="NFT__mint">
         <button
           class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"
-          (click)="toggleModal()"
-        >
+          (click)="toggleModal()">
           <span
-            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-          >
+            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
             Mint
           </span>
         </button>
       </div>
       <!-- Remove py-8 -->
       <div class="mx-auto container py-8">
-        <div
-          class="flex flex-wrap items-center lg:justify-between justify-center"
-        >
+        <div class="flex flex-wrap items-center lg:justify-between justify-center">
           <!-- Card 1 -->
-          <div
-            class="mx-2 w-72 lg:mb-0 mb-8"
-            *ngFor="let item of li; index as i"
-          >
+          <div class="mx-2 w-72 lg:mb-0 mb-8" *ngFor="let item of li; index as i">
             <div class="relative h-32 w-full">
               <div class="absolute top-0 right-0">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="index"
-                  aria-describedby="basic-addon1"
-                  value="{{ i }}"
-                  #index
-                  readonly
-                  style="display: none"
-                />
+                <input type="text" class="form-control" placeholder="index" aria-describedby="basic-addon1"
+                  value="{{ i }}" #index readonly style="display: none" />
                 <button
                   class="bg-red-500 hover:bg-red-400 border-b-4 border-red-700 hover:border-red-500 text-white text-center py-2 px-4 rounded"
-                  [value]="index.value"
-                  (click)="delFav(index.value)"
-                >
+                  [value]="index.value" (click)="delFav(index.value)">
                   Delete
                 </button>
               </div>
               <div></div>
-              <img
-                src="https://avatars.dicebear.com/api/big-ears/{{
+              <img src="https://api.dicebear.com/7.x/big-ears/{{
                   this.li[i].iconUrl
-                }}.svg"
-                class="w-full h-44"
-              />
+                }}.svg" class="w-full h-44" />
             </div>
             <div class="bg-white">
               <div class="flex items-center justify-between px-4 pt-4">
                 <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="icon icon-tabler icon-tabler-bookmark"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="#2c3e50"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bookmark" width="20"
+                    height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path
-                      d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2"
-                    />
+                    <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2" />
                   </svg>
                 </div>
                 <div class="bg-yellow-200 py-1.5 px-6 rounded-full">
@@ -115,23 +84,17 @@
     </div>
     <div *ngIf="isEmpty">
       <div class="flex justify-center py-12 sm:px-6 px-4">
-        <div
-          class="max-w-2xl rounded shadow bg-white dark:bg-grey-blue text-center py-6 pl-6 pr-12"
-        >
+        <div class="max-w-2xl rounded shadow bg-white dark:bg-grey-blue text-center py-6 pl-6 pr-12">
           <div class="md:inline-block items-center md:pb-10 lg:pb-10"></div>
           <div class="md:inline-block text-center pt-10">
-            <p
-              class="text-lg font-semibold text-center leading-4 text-gray-800 dark:text-gray-100 pb-5"
-            >
+            <p class="text-lg font-semibold text-center leading-4 text-gray-800 dark:text-gray-100 pb-5">
               You don't have an NFT ! Mint one already 🤨
             </p>
             <button
               class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"
-              (click)="toggleModal()"
-            >
+              (click)="toggleModal()">
               <span
-                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-              >
+                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                 Mint
               </span>
             </button>
@@ -139,27 +102,19 @@
         </div>
       </div>
     </div>
-    <div
-      *ngIf="showModal"
-      class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
-    >
+    <div *ngIf="showModal"
+      class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
       <div class="relative w-auto my-6 mx-auto max-w-6xl">
         <!--content-->
         <div
-          class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
-        >
+          class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
           <!--header-->
-          <div
-            class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t"
-          >
+          <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
             <h3 class="text-3xl font-semibold">NFT Details</h3>
             <button
               class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-              (click)="toggleModal()"
-            >
-              <span
-                class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"
-              >
+              (click)="toggleModal()">
+              <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
                 ×
               </span>
             </button>
@@ -168,70 +123,37 @@
           <div class="relative p-6 flex-auto">
             <form [formGroup]="formdata" (ngSubmit)="onSubmit()">
               <div class="mb-6">
-                <label
-                  for="text"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >NFT Name</label
-                >
-                <input
-                  type="text"
-                  id="text"
+                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">NFT
+                  Name</label>
+                <input type="text" id="text"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Something Cool"
-                  formControlName="name"
-                  [(ngModel)]="formdata.name"
-                  required
-                />
+                  placeholder="Something Cool" formControlName="name" [(ngModel)]="formdata.name" required />
               </div>
               <div class="mb-6">
-                <label
-                  for="price"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >Price</label
-                >
-                <input
-                  type="number"
-                  id="number"
+                <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Price</label>
+                <input type="number" id="number"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  formControlName="price"
-                  [(ngModel)]="formdata.price"
-                  required
-                />
+                  formControlName="price" [(ngModel)]="formdata.price" required />
               </div>
               <div class="mb-6">
-                <label
-                  for="email"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >Icon URL</label
-                >
-                <input
-                  type="email"
-                  id="email"
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Icon
+                  URL</label>
+                <input type="email" id="email"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="ICON URL"
-                  formControlName="icon"
-                  [(ngModel)]="formdata.icon"
-                  required
-                />
+                  placeholder="ICON URL" formControlName="icon" [(ngModel)]="formdata.icon" required />
               </div>
             </form>
           </div>
           <!--footer-->
-          <div
-            class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b"
-          >
+          <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
             <button
               class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-              type="button"
-              (click)="toggleModal()"
-            >
+              type="button" (click)="toggleModal()">
               Close
             </button>
             <button
               class="bg-emerald-500 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-              type="button"
-              (click)="onSubmit()"
-            >
+              type="button" (click)="onSubmit()">
               Publish NFT
             </button>
           </div>
@@ -243,29 +165,20 @@
   <div class="flex items-center justify-centerbg-gray-50 dark:bg-dark-grey">
     <ng-template #loggedOut>
       <div class="flex justify-center py-12 sm:px-6 px-4">
-        <div
-          class="max-w-2xl rounded shadow bg-white dark:bg-grey-blue text-center py-6 pl-6 pr-12"
-        >
+        <div class="max-w-2xl rounded shadow bg-white dark:bg-grey-blue text-center py-6 pl-6 pr-12">
           <div class="md:inline-block items-center pb-10">
-            <img
-              class="inline object-cover pl-2 w-20 h-20 mr-2 rounded-full"
-              src="https://avatars.dicebear.com/api/bottts/potato.svg"
-              alt="Profile image"
-            />
+            <img class="inline object-cover pl-2 w-20 h-20 mr-2 rounded-full"
+              src="https://api.dicebear.com/7.x/adventurer/potato.svg" alt="Profile image" />
           </div>
           <div class="md:inline-block text-center pt-10">
-            <p
-              class="text-lg font-semibold text-center leading-4 text-gray-800 dark:text-gray-100 pb-5"
-            >
+            <p class="text-lg font-semibold text-center leading-4 text-gray-800 dark:text-gray-100 pb-5">
               You need to Login befire you can mint a NFT
             </p>
             <button
               class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"
-              routerLink="/login"
-            >
+              routerLink="/login">
               <span
-                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-              >
+                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                 Login
               </span>
             </button>
