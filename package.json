@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "install": "npm install --prefix ./src",
-    "start": "npm start --prefix ./src",
-    "build": "npm run build --prefix ./src"
+    "install": "npm install --prefix ./krypto-tracker",
+    "start": "npm start --prefix ./krypto-tracker",
+    "build": "npm run build --prefix ./krypto-tracker"
   }
 }
