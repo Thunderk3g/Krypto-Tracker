@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "install": "npm install --prefix ./krypto-tracker",
+    "install": "npm install -f --prefix ./krypto-tracker",
     "start": "npm start --prefix ./krypto-tracker",
     "build": "npm run build -f --prefix ./krypto-tracker"
   }
