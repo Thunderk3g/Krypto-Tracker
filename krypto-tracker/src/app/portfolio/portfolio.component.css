@@ -2,7 +2,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    margin-top: 40px;
+   /*no need for margin top 40px*/
 }
 .portfolio-img{
     width: 40px;
